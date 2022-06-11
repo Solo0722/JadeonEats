@@ -1,11 +1,19 @@
 @import "~antd/dist/antd.dark.less";
 
+@font-face {
+  font-family: "poppinsregular";
+  src: url("/public/poppins-regular-webfont.woff2") format("woff2"),
+    url("/public/poppins-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
 
 body {
   background-color: #181820;
-  font-family: "Poppins", sans-serif;
+  font-family: "poppinsregular", sans-serif;
   overflow-x: hidden;
 }
