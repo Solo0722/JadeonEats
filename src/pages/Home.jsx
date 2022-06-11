@@ -35,6 +35,7 @@ const HomeContainer = styled.div`
   min-height: calc(100vh - 65px);
   padding: 2rem;
   position: relative;
+  overflow-x: hidden;
 `;
 
 const LandingContainer = styled.div`
