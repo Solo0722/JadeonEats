@@ -45,7 +45,7 @@ const MealCard = ({ product, handleAddToCart }) => {
         <p>
           <StarFilled style={{ color: "gold" }} /> <span>{product.rating}</span>
         </p>
-        <p> GHC{product.price.formatted_with_symbol}</p>
+        <p> {product.price.formatted_with_symbol}</p>
         <Button
           icon={<ShoppingOutlined />}
           style={{ marginTop: "-10px" }}

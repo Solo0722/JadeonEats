@@ -66,9 +66,11 @@ const MenuContainer = styled.div`
 `;
 
 const MealsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 15px 0;
+  /* display: flex;
+  justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px 0;
   width: 65%;
   flex-wrap: wrap;
   padding-left: 20px;

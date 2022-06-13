@@ -10,7 +10,7 @@ const Context = ({ children }) => {
   const [cart, setCart] = useState({});
 
   // console.log(products);
-  console.log(cart);
+  // console.log(cart);
 
   //fetch products
   const fetchProducts = async () => {
