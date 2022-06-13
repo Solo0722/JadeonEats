@@ -63,17 +63,17 @@ const MenuContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
+  overflow-x: hidden;
 `;
 
 const MealsContainer = styled.div`
-  /* display: flex;
-  justify-content: flex-start; */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-around;
   margin: 20px 0;
   width: 65%;
+  margin: 0 auto;
   flex-wrap: wrap;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 
   @media screen and (max-width: 768px) {
     & {

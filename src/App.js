@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.less";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";

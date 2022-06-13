@@ -139,8 +139,9 @@ const CartContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  /* padding: 30px; */
   min-height: calc(100vh - 65px);
+  overflow-x: hidden;
 `;
 
 const FilledCartContainer = styled.div`
@@ -161,12 +162,20 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   width: 70%;
   margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    width: 85%;
+  }
 `;
 
 const OrderContainer = styled.div`
   width: 40%;
   margin: 0 auto;
   margin-top: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 85%;
+  }
 `;
 
 const OrderLayout = styled.div`
