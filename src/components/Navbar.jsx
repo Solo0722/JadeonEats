@@ -1,12 +1,15 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, Badge } from "antd";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import SearchTab from "./SearchTab";
 import Drawerbar from "./Drawerbar";
+import { AppContext } from "../context/Context";
 
 const Navbar = () => {
+
+  const { cart } = useContext(AppContext);
   const location = useLocation();
   return (
     <NavContainer
@@ -38,7 +41,7 @@ const Navbar = () => {
           }}
         >
           <Badge
-            count={"3"}
+            count={cart.total_items}
             overflowCount={"9"}
             color={"gold"}
             children={

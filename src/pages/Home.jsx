@@ -23,7 +23,9 @@ const Home = () => {
           </ImgContainer>
         </LandingContainer>
         <AdvertContainer></AdvertContainer>
-        <MapContainer></MapContainer>
+        <MapContainer>
+          <h2>Where we are located</h2>
+        </MapContainer>
         <Footer />
       </HomeContainer>
     </>
@@ -44,11 +46,52 @@ const LandingContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 const DeliveryAddressContainer = styled.div`
   width: 60%;
   transform: translateY(-30%) !important;
+  /* animation: bounceInUp;
+  animation-duration: 2s; */
+
+  @keyframes bounceInUp {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+      -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 3000px, 0) scaleY(5);
+      transform: translate3d(0, 3000px, 0) scaleY(5);
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate3d(0, -20px, 0) scaleY(0.9);
+      transform: translate3d(0, -20px, 0) scaleY(0.9);
+    }
+
+    75% {
+      -webkit-transform: translate3d(0, 10px, 0) scaleY(0.95);
+      transform: translate3d(0, 10px, 0) scaleY(0.95);
+    }
+
+    90% {
+      -webkit-transform: translate3d(0, -5px, 0) scaleY(0.985);
+      transform: translate3d(0, -5px, 0) scaleY(0.985);
+    }
+
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
   h1 {
     font-size: 3.5rem;
@@ -110,11 +153,14 @@ const ImgContainer = styled.div`
 
 const AdvertContainer = styled.div`
   min-height: 70vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
 `;
 
 const MapContainer = styled.div`
   height: 80vh;
-  border-top: 1px solid red;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
 `;
 
 export default Home;

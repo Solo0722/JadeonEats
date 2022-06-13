@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -34,7 +35,7 @@ const meals = [
 ];
 
 const Menu = () => {
-  const { products } = useContext(AppContext);
+  const { products, handleAddToCart } = useContext(AppContext);
 
   return (
     <>
@@ -42,9 +43,13 @@ const Menu = () => {
       <MenuContainer>
         <SideBar />
         <MealsContainer>
-          {products.map((product) => (
-            <MealCard product={product} />
-          ))}
+          {!products ? (
+            <Spin />
+          ) : (
+            products.map((product) => (
+              <MealCard product={product} handleAddToCart={handleAddToCart} />
+            ))
+          )}
         </MealsContainer>
       </MenuContainer>
     </>
@@ -66,6 +71,13 @@ const MealsContainer = styled.div`
   margin: 15px 0;
   width: 65%;
   flex-wrap: wrap;
+  padding-left: 20px;
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 100%;
+    }
+  }
 `;
 
 export default Menu;
