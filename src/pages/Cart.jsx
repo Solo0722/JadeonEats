@@ -103,7 +103,12 @@ const Cart = () => {
               </OrderLayout>
             </List.Item>
           </List>
-          <Button block type="primary" style={{ marginTop: "15px" }}>
+          <Button
+            block
+            type="primary"
+            style={{ marginTop: "15px" }}
+            href={"/checkout"}
+          >
             Checkout
           </Button>
           <Button
@@ -162,6 +167,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   width: 70%;
   margin: 0 auto;
+  margin-top: 30px;
 
   @media screen and (max-width: 768px) {
     width: 85%;
