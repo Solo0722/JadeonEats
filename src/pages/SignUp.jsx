@@ -29,11 +29,6 @@ const SignUp = () => {
 
   return (
     <>
-      <Button
-        icon={<LeftOutlined />}
-        style={{ position: "absolute", top: "5%", left: "3%", zIndex: "30" }}
-        href="/"
-      />
       <SignUpContainer>
         <h1>Sign Up</h1>
         <LoginForm>

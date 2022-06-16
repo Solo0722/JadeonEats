@@ -15,12 +15,6 @@ const Login = () => {
 
   return (
     <>
-      <Button
-        icon={<LeftOutlined />}
-        style={{ position: "absolute", top: "5%", left: "3%", zIndex: "30" }}
-        href="/"
-      />
-
       <LoginContainer>
         <LogoContainer>
           {/* <img src="/salad.png" alt="logo" /> */}

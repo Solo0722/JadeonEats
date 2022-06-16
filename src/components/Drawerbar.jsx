@@ -1,10 +1,12 @@
 import { Button, Drawer, List } from "antd";
 import { CloseCircleOutlined, MenuOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MealLinksContainer } from "./SideBar";
 import SearchTab from "./SearchTab";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import SwitchContainer from "./SwitchContainer";
+import { AppContext } from "../context/Context";
 
 const categories = [
   "Most Popular",
@@ -29,6 +31,8 @@ const Drawerbar = () => {
 
   const location = useLocation();
 
+  const { renderCategoryList } = useContext(AppContext);
+
   return (
     <DrawerContainer>
       <Button
@@ -42,7 +46,18 @@ const Drawerbar = () => {
       />
 
       <Drawer
-        title="Store"
+        title={
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <span>Categories</span>
+          </div>
+        }
         placement="right"
         onClose={onClose}
         visible={visible}
@@ -56,17 +71,7 @@ const Drawerbar = () => {
         }}
       >
         <SearchTab />
-        <MealLinksContainer>
-          <List>
-            {categories.map((cat) => (
-              <List.Item>
-                <Button type="text" block style={{ textAlign: "left" }}>
-                  {cat}
-                </Button>
-              </List.Item>
-            ))}
-          </List>
-        </MealLinksContainer>
+        <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
       </Drawer>
     </DrawerContainer>
   );

@@ -26,8 +26,8 @@ const Home = () => {
         <MapContainer>
           <h2>Where we are located</h2>
         </MapContainer>
-        <Footer />
       </HomeContainer>
+      <Footer />
     </>
   );
 };
@@ -35,7 +35,7 @@ const Home = () => {
 const HomeContainer = styled.div`
   width: 100%;
   min-height: calc(100vh - 65px);
-  padding: 2rem;
+  padding: 2rem 1rem;
   position: relative;
   overflow-x: hidden;
 `;
@@ -131,7 +131,6 @@ const AdvertContainer = styled.div`
 
 const MapContainer = styled.div`
   height: 80vh;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px 0;
 `;
 

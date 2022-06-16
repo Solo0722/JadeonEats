@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import Commerce from "@chec/commerce.js";
+import { Button, List } from "antd";
 
 export const AppContext = createContext();
 
@@ -8,6 +9,16 @@ const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
 const Context = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+
+  const categories = [
+    "Breakfast",
+    "Lunch",
+    "Supper",
+    "Snacks",
+    "Desserts",
+    "Continental",
+    "Local",
+  ];
 
   // console.log(products);
   // console.log(cart);
@@ -57,6 +68,20 @@ const Context = ({ children }) => {
     fetchCart();
   }, []);
 
+  const renderCategoryList = () => {
+    return (
+      <List bordered={false}>
+        {categories.map((cat) => (
+          <List.Item>
+            <Button type="text" block style={{ textAlign: "left" }}>
+              {cat}
+            </Button>
+          </List.Item>
+        ))}
+      </List>
+    );
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -66,6 +91,7 @@ const Context = ({ children }) => {
         handleEmptyCart,
         handleRemoveFromCart,
         handleUpdateCartQty,
+        renderCategoryList,
       }}
     >
       {children}

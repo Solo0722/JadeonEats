@@ -1,21 +1,20 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Button, Badge } from "antd";
+import { Button, Badge, Switch } from "antd";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import SearchTab from "./SearchTab";
 import Drawerbar from "./Drawerbar";
 import { AppContext } from "../context/Context";
+import SwitchContainer from "./SwitchContainer";
 
 const Navbar = () => {
-
   const { cart } = useContext(AppContext);
   const location = useLocation();
   return (
     <NavContainer
       style={{
-        borderBottom: `${
-          location.pathname !== "/" ? "1px solid rgba(255,255,255,0.2)" : null
+        background: `${
+          location.pathname !== "/" ?"#21212b" : null
         }`,
       }}
     >
@@ -26,14 +25,12 @@ const Navbar = () => {
           icon={<img src="/salad.png" width={30} height={30} />}
         />
       </LogoContainer>
-      {/* <SearchContainer>
-        <SearchTab />
-      </SearchContainer> */}
 
       <ToolsContainer>
         <AuthenticationContainer>
-          <Button href="/login">Login</Button>
-          <Button href="/signup">Sign Up</Button>
+          <Button href="/login">Login/Sign up</Button>
+          {/* <Button href="/signup">Sign Up</Button> */}
+          {/* <SwitchContainer /> */}
         </AuthenticationContainer>
         <CartContainer
           style={{
@@ -62,7 +59,7 @@ const Navbar = () => {
 const NavContainer = styled.nav`
   width: 100%;
   height: 65px;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
