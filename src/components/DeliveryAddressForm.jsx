@@ -1,14 +1,18 @@
-import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { HiLocationMarker } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../context/Context";
 
 const DeliveryAddressForm = () => {
   const navigate = useNavigate();
+  const { setDeliveryAddress } = useContext(AppContext);
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    console.log(values.deliveryAddress);
+    setDeliveryAddress(values.deliveryAddress);
     navigate("/menu");
   };
 
@@ -28,7 +32,7 @@ const DeliveryAddressForm = () => {
       // style={{ display: "flex", flexDirection: "row", width: "100%" }}
     >
       <Form.Item
-        name="address"
+        name="deliveryAddress"
         rules={[
           {
             required: true,
@@ -43,7 +47,7 @@ const DeliveryAddressForm = () => {
             background: "rgba(0,0,0,0.2)",
             backdropFilter: "blur(10px)",
           }}
-          placeholder="Enter delivery address"
+          placeholder="Enter delivery address eg. Autonomy Hall room 25"
         />
       </Form.Item>
 

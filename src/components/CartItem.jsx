@@ -46,13 +46,8 @@ const CartItemContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  /* padding: 10px; */
   width: 100%;
   height: 100%;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -60,12 +55,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  height: 100%;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    width: 100%;
-  }
+  /* height: 100%; */
 `;
 
 const ImgContainer = styled.div`
@@ -77,32 +67,12 @@ const ImgContainer = styled.div`
   margin-right: 10px;
   background: #181820;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    margin-right: 0;
-  }
 `;
 const ItemDetailsContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: left;
   flex-direction: column;
-
-  /* span {
-    margin-top: 50%;
-    text-align: right;
-  } */
-
-  @media screen and (max-width: 768px) {
-    & {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin: 5px 0;
-      width: 100%;
-    }
-  }
+  height: 100%;
 `;
 
 const AmountContainer = styled.div`
@@ -110,23 +80,6 @@ const AmountContainer = styled.div`
   align-items: left;
   justify-content: space-between;
   flex-direction: column;
-
-  button {
-    margin-top: 100%;
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px 0;
-      width: 100%;
-    }
-    button {
-      margin-top: -15px;
-    }
-  }
 `;
 
 export default CartItem;

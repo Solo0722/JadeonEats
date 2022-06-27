@@ -29,19 +29,25 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-      <FooterContainer>
-        <LinksContainer>
-          {links.map((link) => (
-            <Button type="text">{link}</Button>
-          ))}
-        </LinksContainer>
-        <SocialLinksContainer>
-          {socialLinks.map((socialLink) => (
-            <Button icon={socialLink.icon} type="link" size="large" href={socialLink.url } target="_blank"/>
-          ))}
-        </SocialLinksContainer>
-        <p>Copyright By JadeonEats &copy; 2022, All rights reserved.</p>
-      </FooterContainer>
+    <FooterContainer>
+      <LinksContainer>
+        {links.map((link) => (
+          <Button type="text">{link}</Button>
+        ))}
+      </LinksContainer>
+      <SocialLinksContainer>
+        {socialLinks.map((socialLink) => (
+          <Button
+            icon={socialLink.icon}
+            type="link"
+            size="large"
+            href={socialLink.url}
+            target="_blank"
+          />
+        ))}
+      </SocialLinksContainer>
+      <p>&copy; 2022 JadeonEats, Inc. All rights reserved.</p>
+    </FooterContainer>
   );
 };
 
@@ -57,14 +63,20 @@ const FooterContainer = styled.footer`
   p {
     text-align: center;
   }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 80%;
+    }
+  }
 `;
 
 const LinksContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 20px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 `;
 
 const SocialLinksContainer = styled.div`

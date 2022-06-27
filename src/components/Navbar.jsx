@@ -13,9 +13,7 @@ const Navbar = () => {
   return (
     <NavContainer
       style={{
-        background: `${
-          location.pathname !== "/" ?"#21212b" : null
-        }`,
+        background: `${location.pathname !== "/" ? "#21212b" : null}`,
       }}
     >
       <LogoContainer>
@@ -23,15 +21,18 @@ const Navbar = () => {
           type="text"
           href="/"
           icon={<img src="/salad.png" width={30} height={30} />}
-        />
+          style={{ display: "flex", flexDirection: "row" }}
+        >
+          <h3 style={{ marginLeft: "10px" }}>JadeonEats</h3>
+        </Button>
       </LogoContainer>
 
       <ToolsContainer>
-        <AuthenticationContainer>
-          <Button href="/login">Login/Sign up</Button>
-          {/* <Button href="/signup">Sign Up</Button> */}
-          {/* <SwitchContainer /> */}
-        </AuthenticationContainer>
+        {/* <AuthenticationContainer> */}
+        {/* <Button href="/login">Login/Sign up</Button> */}
+        {/* <Button href="/signup">Sign Up</Button> */}
+        {/* <SwitchContainer /> */}
+        {/* </AuthenticationContainer> */}
         <CartContainer
           style={{
             display: `${location.pathname == "/" ? "none" : "flex"}`,

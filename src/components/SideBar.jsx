@@ -15,15 +15,18 @@ const SideBar = () => {
       </TitleContainer>
       <SearchTab />
       <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
+      
     </SidebarContainer>
   );
 };
 
 const SidebarContainer = styled.div`
   width: 25%;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  /* border-left: 1px solid rgba(255, 255, 255, 0.1); */
   padding: 2rem 1rem;
+  position: fixed;
+  top: 65px;
+  bottom: 0;
+  overflow-y: scroll;
 
   @media screen and (max-width: 768px) {
     & {

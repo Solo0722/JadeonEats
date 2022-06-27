@@ -1,5 +1,5 @@
-import { Spin } from "antd";
-import React, { useContext } from "react";
+import { Spin, message } from "antd";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
 import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
@@ -40,17 +40,17 @@ const MenuContainer = styled.div`
 
 const MealsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 20px 0;
   width: 65%;
-  margin: 0 auto;
+  margin-left: 25%;
   margin-top: 20px;
   flex-wrap: wrap;
-  /* padding-left: 20px; */
 
   @media screen and (max-width: 768px) {
     & {
       width: 100%;
+      margin-left: 0;
     }
   }
 `;

@@ -6,33 +6,6 @@ import CartItem from "../components/CartItem";
 import Navbar from "../components/Navbar";
 import { AppContext } from "../context/Context";
 
-// const meals = [
-//   {
-//     name: "Fried rice and chicken",
-//     price: "20.00",
-//     rating: 4.8,
-//     img: "",
-//   },
-//   {
-//     name: "Pepperoni Pizza",
-//     price: "45.00",
-//     rating: 4.2,
-//     img: "",
-//   },
-//   {
-//     name: "Fufu and Groundnut soup",
-//     price: "30.00",
-//     rating: 4.9,
-//     img: "",
-//   },
-//   {
-//     name: "Jollof rice and sausage",
-//     price: "10.00",
-//     rating: 4.1,
-//     img: "",
-//   },
-// ];
-
 const Cart = () => {
   const { cart, handleRemoveFromCart, handleEmptyCart, handleUpdateCartQty } =
     useContext(AppContext);
@@ -57,13 +30,7 @@ const Cart = () => {
       <FilledCartContainer>
         <TitleContainer>
           <h2>Shopping Cart</h2>
-          <Button
-            type="primary"
-            style={{ background: "red", border: "none" }}
-            onClick={handleEmptyCart}
-          >
-            Empty Cart
-          </Button>
+          <h2>Subtotal : {cart.subtotal.formatted_with_symbol}</h2>
         </TitleContainer>
         <CartItemsContainer>
           <List>
@@ -79,38 +46,6 @@ const Cart = () => {
           </List>
         </CartItemsContainer>
         <OrderContainer>
-          <List>
-            <List.Item>
-              <OrderLayout>
-                <span>Subtotal</span>
-                <span>{cart.subtotal.formatted_with_symbol}</span>
-              </OrderLayout>
-            </List.Item>
-            <List.Item>
-              <OrderLayout>
-                <span>Delivery Fee</span>
-                <span>$2.00</span>
-              </OrderLayout>
-            </List.Item>
-            <List.Item>
-              <OrderLayout>
-                <span style={{ fontWeight: "bold", color: "#fff" }}>
-                  Order total
-                </span>
-                <span style={{ fontWeight: "bold", color: "#fff" }}>
-                  {cart.subtotal.formatted_with_symbol}
-                </span>
-              </OrderLayout>
-            </List.Item>
-          </List>
-          <Button
-            block
-            type="primary"
-            style={{ marginTop: "15px" }}
-            href={"/checkout"}
-          >
-            Checkout
-          </Button>
           <Button
             icon={<ArrowLeftOutlined />}
             type="text"
@@ -119,6 +54,23 @@ const Cart = () => {
           >
             Continue Shopping
           </Button>
+          <div>
+            <Button
+              // block
+              type="primary"
+              href={"/checkout"}
+              style={{ marginRight: "20px" }}
+            >
+              Checkout
+            </Button>
+            <Button
+              type="primary"
+              style={{ background: "red", border: "none" }}
+              onClick={handleEmptyCart}
+            >
+              Empty Cart
+            </Button>
+          </div>
         </OrderContainer>
       </FilledCartContainer>
     );
@@ -144,7 +96,6 @@ const CartContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 30px; */
   min-height: calc(100vh - 65px);
   overflow-x: hidden;
 `;
@@ -155,10 +106,15 @@ const FilledCartContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 20px;
 `;
 const CartItemsContainer = styled.div`
   width: 70%;
   margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -168,30 +124,24 @@ const TitleContainer = styled.div`
   width: 70%;
   margin: 0 auto;
   margin-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   @media screen and (max-width: 768px) {
-    width: 85%;
+    width: 90%;
   }
 `;
 
 const OrderContainer = styled.div`
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 20px;
-
-  @media screen and (max-width: 768px) {
-    width: 85%;
-  }
-`;
-
-const OrderLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 
-  span {
-    color: rgba(255, 255, 255, 0.5);
+  @media screen and (max-width: 768px) {
+    width: 90%;
   }
 `;
 

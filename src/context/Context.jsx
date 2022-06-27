@@ -6,22 +6,35 @@ export const AppContext = createContext();
 
 const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
 
+const categories = [
+  "Breakfast",
+  "Lunch",
+  "Supper",
+  "Snacks",
+  "Desserts",
+  "Continental",
+  "Local",
+];
+
 const Context = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+  const [checkoutToken, setCheckoutToken] = useState(null);
+  const [shippingCountry, setShippingCountry] = useState("");
+  const [shippingSubdivision, setShippingSubdivision] = useState("");
+  const [shippingOption, setShippingOption] = useState("");
 
-  const categories = [
-    "Breakfast",
-    "Lunch",
-    "Supper",
-    "Snacks",
-    "Desserts",
-    "Continental",
-    "Local",
-  ];
+  const [deliveryAddress, setDeliveryAddress] = useState(
+    JSON.parse(localStorage.getItem("deliveryAddress"))
+  );
+
+  useEffect(() => {
+    localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
+  }, [deliveryAddress]);
 
   // console.log(products);
   // console.log(cart);
+  // console.log(checkoutToken);
 
   //fetch products
   const fetchProducts = async () => {
@@ -68,17 +81,72 @@ const Context = ({ children }) => {
     fetchCart();
   }, []);
 
+  //generating checkout token
+  const generateCheckoutToken = async () => {
+    try {
+      const token = await commerce.checkout.generateToken(cart.id, {
+        type: "cart",
+      });
+
+      setCheckoutToken(token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //fetching shipping country
+  const fetchShippingCountry = async (checkoutTokenId) => {
+    const { countries } = await commerce.services.localeListShippingCountries(
+      checkoutTokenId
+    );
+    setShippingCountry(countries.GH);
+    console.log(shippingCountry);
+  };
+
+  //fetching shipping Subdivision
+  const fetchShippingSubdivision = async (checkoutTokenId) => {
+    const { subdivisions } =
+      await commerce.services.localeListShippingSubdivisions(
+        checkoutTokenId,
+        "GH"
+      );
+    setShippingSubdivision(subdivisions);
+  };
+
+  //fetching shipping options
+  const fetchShippingOption = async (
+    checkoutTokenId,
+    country,
+    region = null
+  ) => {
+    const options = await commerce.checkout.getShippingOptions(
+      checkoutTokenId,
+      { country, region }
+    );
+    setShippingOption(options[0].id);
+  };
+
   const renderCategoryList = () => {
     return (
-      <List bordered={false}>
-        {categories.map((cat) => (
-          <List.Item>
-            <Button type="text" block style={{ textAlign: "left" }}>
-              {cat}
-            </Button>
-          </List.Item>
-        ))}
-      </List>
+      <>
+        <List bordered={false}>
+          {categories.map((cat) => (
+            <List.Item>
+              <Button type="text" block style={{ textAlign: "left" }}>
+                {cat}
+              </Button>
+            </List.Item>
+          ))}
+        </List>
+        <Button
+          href="/login"
+          type="primary"
+          block
+          style={{ marginTop: "30px" }}
+        >
+          Login/Sign up
+        </Button>
+      </>
     );
   };
 
@@ -92,6 +160,12 @@ const Context = ({ children }) => {
         handleRemoveFromCart,
         handleUpdateCartQty,
         renderCategoryList,
+        generateCheckoutToken,
+        checkoutToken,
+        fetchShippingCountry,
+        fetchShippingSubdivision,
+        deliveryAddress,
+        setDeliveryAddress,
       }}
     >
       {children}

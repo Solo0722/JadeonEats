@@ -1,13 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Steps } from "antd";
 import DeliveryDetails from "../components/DeliveryDetails";
 import { ShopFilled } from "@ant-design/icons";
 import PaymentDetails from "../components/PaymentDetails";
+import { AppContext } from "../context/Context";
 
 const { Step } = Steps;
 
 const Checkout = () => {
+  const { generateCheckoutToken, checkoutToken, cart, fetchShippingCountry } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    cart && generateCheckoutToken();
+  }, [cart]);
+
+  useEffect(() => {
+    checkoutToken && fetchShippingCountry(checkoutToken.id);
+  }, [checkoutToken]);
+
   const [current, setCurrent] = useState(0);
 
   const next = () => {
@@ -17,48 +29,6 @@ const Checkout = () => {
   const prev = () => {
     setCurrent(current - 1);
   };
-
-  // var options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 5000,
-  //   maximumAge: 0,
-  // };
-
-  // function success(pos) {
-  //   var crd = pos.coords;
-
-  //   console.log("Your current position is:");
-  //   console.log(`Latitude : ${crd.latitude}`);
-  //   console.log(`Longitude: ${crd.longitude}`);
-  //   console.log(`More or less ${crd.accuracy} meters.`);
-  // }
-
-  // function errors(err) {
-  //   console.warn(`ERROR(${err.code}): ${err.message}`);
-  // }
-
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.permissions
-  //       .query({ name: "geolocation" })
-  //       .then(function (result) {
-  //         if (result.state === "granted") {
-  //           console.log(result.state);
-  //           //If granted then you can directly call your function here
-  //         } else if (result.state === "prompt") {
-  //           console.log(result.state);
-  //           navigator.geolocation.getCurrentPosition(success, errors, options);
-  //         } else if (result.state === "denied") {
-  //           //If denied then you have to show instructions to enable location
-  //         }
-  //         result.onchange = function () {
-  //           console.log(result.state);
-  //         };
-  //       });
-  //   } else {
-  //     alert("Sorry Not available!");
-  //   }
-  // }, []);
 
   const steps = [
     {
@@ -91,7 +61,7 @@ const CheckoutContainer = styled.div`
   flex-direction: column;
   width: 60%;
   margin: 0 auto;
-  margin-top:30px;
+  margin-top: 30px;
   min-height: 100vh;
 
   @media screen and (max-width: 768px) {

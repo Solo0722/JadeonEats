@@ -8,33 +8,6 @@ import styled from "styled-components";
 const MealCard = ({ product, handleAddToCart }) => {
   return (
     <CardContainer>
-      {/* <Card
-        hoverable
-        style={{
-          width: "100%",
-          padding: 0,
-        }}
-        cover={<img src={product.image.url} />}
-      >
-        <Card.Meta
-          style={{ width: "100%" }}
-          title={<p>{product.name}</p>}
-          description={
-            <DescriptionContainer>
-              <p>
-                <StarFilled style={{ color: "gold" }} />{" "}
-                <span>{product.rating}</span>
-              </p>
-              <p> {product.price.formatted_with_symbol}</p>
-              <Button
-                icon={<ShoppingOutlined />}
-                style={{ marginTop: "-10px" }}
-                onClick={() => handleAddToCart(product.id, 1)}
-              />
-            </DescriptionContainer>
-          }
-        />
-      </Card> */}
       <CardMedia>
         <img src={product.image.url} width={"100%"} height={"100%"} />
       </CardMedia>
@@ -42,9 +15,9 @@ const MealCard = ({ product, handleAddToCart }) => {
         <p>{product.name}</p>
       </CardHeader>
       <CardBody>
-        <p>
+        {/* <p>
           <StarFilled style={{ color: "gold" }} /> <span>{product.rating}</span>
-        </p>
+        </p> */}
         <p> {product.price.formatted_with_symbol}</p>
         <Button
           icon={<ShoppingOutlined />}
@@ -57,21 +30,22 @@ const MealCard = ({ product, handleAddToCart }) => {
 };
 
 const CardContainer = styled.div`
-  width: 40%;
+  width: 300px;
   margin: 10px;
   height: 250px;
   display: flex;
   flex-direction: column;
   background: #181820;
   transition: 0.5s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: scale(1.01);
   }
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     width: 40%;
-  }
+  } */
 `;
 const CardMedia = styled.div`
   width: 100%;
@@ -79,9 +53,11 @@ const CardMedia = styled.div`
 `;
 const CardHeader = styled.div`
   margin-top: 5px;
+  padding: 0 10px;
 `;
 
 const CardBody = styled.div`
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
