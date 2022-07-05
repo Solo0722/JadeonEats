@@ -11,11 +11,7 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
           <img src={item.image.url} width={"100%"} height={"100%"} />
         </ImgContainer>
         <ItemDetailsContainer>
-          <p>{item.name}</p>
-          {/* <span>
-            <StarFilled />
-            {meal.rating}
-          </span> */}
+          <h3>{item.name}</h3>
           <Button.Group>
             <Button
               onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}
@@ -48,6 +44,10 @@ const CartItemContainer = styled.div`
   flex-direction: row;
   width: 100%;
   height: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -55,7 +55,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  /* height: 100%; */
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ImgContainer = styled.div`
@@ -65,14 +68,27 @@ const ImgContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  background: #181820;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
 `;
 const ItemDetailsContainer = styled.div`
   display: flex;
   align-items: left;
   flex-direction: column;
   height: 100%;
+
+  @media screen and (max-width: 768px) {
+    h3 {
+      text-align: center;
+    }
+  }
 `;
 
 const AmountContainer = styled.div`
@@ -80,6 +96,11 @@ const AmountContainer = styled.div`
   align-items: left;
   justify-content: space-between;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+  }
 `;
 
 export default CartItem;
