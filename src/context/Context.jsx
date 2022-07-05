@@ -199,6 +199,10 @@ const Context = ({ children }) => {
     );
   };
 
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{

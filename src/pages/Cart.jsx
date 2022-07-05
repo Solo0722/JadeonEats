@@ -15,9 +15,7 @@ const Cart = () => {
     fetchCart,
   } = useContext(AppContext);
 
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  
 
   const EmptyCart = () => {
     return (
