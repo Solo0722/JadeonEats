@@ -13,22 +13,16 @@ const Navbar = () => {
   return (
     <NavContainer className="navbar">
       <LogoContainer>
-        {/* <div
-          style={{ display: "flex", flexDirection: "row", textAlign: "left" }}
-        >
-          <img src="/salad.png" width={30} height={30} />
-          <h4 style={{ margin: "5px 0px 0px 7px" }}>
-            <span style={{ color: "gold" }}>Jadeon</span>Eats
-          </h4>
-        </div> */}
+        <Drawerbar />
         <h3>
-          Jadeon<span style={{ fontWeight: "bolder" }}>Eats</span>
+          Jadeon
+          <span style={{ fontWeight: "bolder", color: "orangered" }}>Eats</span>
         </h3>
       </LogoContainer>
 
       <ToolsContainer>
         <SwitchTheme />
-        <Button icon={<SearchOutlined />} />
+        <Button icon={<SearchOutlined />} type="ghost" />
         <CartContainer
           style={{
             display: `${location.pathname == "/" ? "none" : "flex"}`,
@@ -38,7 +32,7 @@ const Navbar = () => {
           <Badge
             count={cart.total_items}
             overflowCount={"9"}
-            color={"gold"}
+            color={"orangered"}
             children={
               <Button
                 type="ghost"
@@ -48,7 +42,6 @@ const Navbar = () => {
             }
           />
         </CartContainer>
-        <Drawerbar />
       </ToolsContainer>
     </NavContainer>
   );
@@ -67,7 +60,19 @@ const NavContainer = styled.nav`
   z-index: 100;
 `;
 
-const LogoContainer = styled.div``;
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-left: 7px;
+    font-family: "Poppins";
+  }
+`;
 const SearchContainer = styled.div``;
 const ToolsContainer = styled.div`
   display: flex;

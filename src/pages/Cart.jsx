@@ -1,14 +1,23 @@
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Empty, List, Spin } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import CartItem from "../components/CartItem";
 import Navbar from "../components/Navbar";
 import { AppContext } from "../context/Context";
 
 const Cart = () => {
-  const { cart, handleRemoveFromCart, handleEmptyCart, handleUpdateCartQty } =
-    useContext(AppContext);
+  const {
+    cart,
+    handleRemoveFromCart,
+    handleEmptyCart,
+    handleUpdateCartQty,
+    fetchCart,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   const EmptyCart = () => {
     return (

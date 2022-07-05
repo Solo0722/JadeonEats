@@ -10,8 +10,7 @@ const SideBar = () => {
 
   return (
     <SidebarContainer className="sidebar">
-      <TitleContainer>
-      </TitleContainer>
+      <TitleContainer></TitleContainer>
       <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
     </SidebarContainer>
   );
@@ -19,8 +18,7 @@ const SideBar = () => {
 
 const SidebarContainer = styled.div`
   width: 20%;
-  /* padding: 2rem 1rem; */
-  padding:10px 0;
+  padding: 5px 0;
   position: fixed;
   top: 50px;
   bottom: 0;

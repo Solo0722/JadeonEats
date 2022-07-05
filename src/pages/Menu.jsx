@@ -1,5 +1,6 @@
 import { Spin, message, Input } from "antd";
 import React, { useContext, useEffect, useLayoutEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DeliverTo from "../components/DeliverTo";
 import MealCard from "../components/MealCard";
@@ -8,7 +9,17 @@ import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
 
 const Menu = () => {
-  const { products, handleAddToCart } = useContext(AppContext);
+  const {
+    products,
+    handleAddToCart,
+    fetchProducts,
+  } = useContext(AppContext);
+
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    fetchProducts();
+  }, [categoryId]);
 
   return (
     <>

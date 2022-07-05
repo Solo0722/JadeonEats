@@ -9,42 +9,52 @@ const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
 
 const categories = [
   {
+    id: "",
     name: "Deals",
     image: "/deals.png",
   },
   {
+    id: "cat_nPEVlNLV0oa7dM",
     name: "Breakfast",
     image: "/coffeeandtea.png",
   },
   {
+    id: "cat_bWZ3l86L8okpEQ",
     name: "Lunch",
     image: "/FastFood_BrowseHome@3x.png",
   },
   {
+    id: "cat_QG375vVjQ5rMOg",
     name: "Supper",
     image: "/comfortfood.png",
   },
   {
+    id: "cat_0egY5eRMpl3QnA",
     name: "Local",
     image: "/comfortfood.png",
   },
   {
+    id: "cat_RqEv5xLz15Zz4j",
     name: "Continental",
     image: "/american.png",
   },
   {
+    id: "",
     name: "Bakery",
     image: "/bakery.png",
   },
   {
+    id: "cat_8XxzoB8qglPQAZ",
     name: "Desserts",
     image: "/dessert.png",
   },
   {
+    id: "cat_8XxzoB8qglPQAZ",
     name: "Drinks",
     image: "/coffeeandtea.png",
   },
   {
+    id: "cat_8XxzoB8qglPQAZ",
     name: "Snacks",
     image: "/icecreamandyogort.png",
   },
@@ -66,52 +76,40 @@ const Context = ({ children }) => {
     localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
   }, [deliveryAddress]);
 
-  //fetch products
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
 
     setProducts(data);
   };
 
-  //fetch cart
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
   };
 
-  //add items to cart
   const handleAddToCart = async (productId, quantity) => {
     const { cart } = await commerce.cart.add(productId, quantity);
 
     setCart(cart);
   };
 
-  //update quantity of cart
   const handleUpdateCartQty = async (productId, quantity) => {
     const { cart } = await commerce.cart.update(productId, { quantity });
 
     setCart(cart);
   };
 
-  //remove item from cart
   const handleRemoveFromCart = async (productId) => {
     const { cart } = await commerce.cart.remove(productId);
 
     setCart(cart);
   };
 
-  //empty the cart
   const handleEmptyCart = async () => {
     const { cart } = await commerce.cart.empty();
 
     setCart(cart);
   };
 
-  useEffect(() => {
-    fetchProducts();
-    fetchCart();
-  }, []);
-
-  //generating checkout token
   const generateCheckoutToken = async () => {
     try {
       const token = await commerce.checkout.generateToken(cart.id, {
@@ -124,7 +122,6 @@ const Context = ({ children }) => {
     }
   };
 
-  //fetching shipping country
   const fetchShippingCountry = async (checkoutTokenId) => {
     const { countries } = await commerce.services.localeListShippingCountries(
       checkoutTokenId
@@ -133,7 +130,6 @@ const Context = ({ children }) => {
     console.log(shippingCountry);
   };
 
-  //fetching shipping Subdivision
   const fetchShippingSubdivision = async (checkoutTokenId) => {
     const { subdivisions } =
       await commerce.services.localeListShippingSubdivisions(
@@ -143,7 +139,6 @@ const Context = ({ children }) => {
     setShippingSubdivision(subdivisions);
   };
 
-  //fetching shipping options
   const fetchShippingOption = async (
     checkoutTokenId,
     country,
@@ -165,6 +160,7 @@ const Context = ({ children }) => {
               icon={<HomeOutlined style={{ marginRight: "10px" }} />}
               type="text"
               block
+              href="/menu"
               style={{ textAlign: "left" }}
             >
               Home
@@ -175,6 +171,7 @@ const Context = ({ children }) => {
               <Button
                 type="text"
                 block
+                href={`/menu/${cat.id}`}
                 icon={
                   <img
                     src={cat.image}
@@ -207,6 +204,8 @@ const Context = ({ children }) => {
       value={{
         products,
         cart,
+        fetchCart,
+        fetchProducts,
         handleAddToCart,
         handleEmptyCart,
         handleRemoveFromCart,
@@ -216,6 +215,7 @@ const Context = ({ children }) => {
         checkoutToken,
         fetchShippingCountry,
         fetchShippingSubdivision,
+        fetchShippingOption,
         deliveryAddress,
         setDeliveryAddress,
       }}

@@ -33,10 +33,10 @@ const Drawerbar = () => {
 
       <Drawer
         headerStyle={{ display: "none" }}
-        placement="right"
+        placement="left"
         onClose={onClose}
         visible={visible}
-        width={"80%"}
+        width={"70%"}
         closeIcon={<CloseCircleOutlined />}
       >
         <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>

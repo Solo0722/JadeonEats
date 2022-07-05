@@ -23,7 +23,7 @@ const MealCard = ({ product, handleAddToCart }) => {
         />
       </CardMedia>
       <CardHeader>
-        <p>{product.name}</p>
+        <p style={{ fontWeight: "bold" }}>{product.name}</p>
       </CardHeader>
       <CardBody>
         <p> {product.price.formatted_with_symbol}</p>
@@ -41,12 +41,13 @@ const MealCard = ({ product, handleAddToCart }) => {
 };
 
 const CardContainer = styled.div`
-  width: 240px;
+  width: 270px;
   margin: 10px 0px;
   height: 250px;
   display: flex;
   flex-direction: column;
   transition: 0.5s ease-in-out;
+  cursor: pointer;
 
   border-radius: 5px;
 

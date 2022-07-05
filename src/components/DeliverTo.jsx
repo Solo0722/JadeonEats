@@ -9,7 +9,7 @@ const DeliverTo = () => {
 
   return (
     <Container>
-      <h4>Deliver To:</h4>
+      <h3>Deliver To:</h3>
       <Input
         style={{ borderRadius: "20px" }}
         prefix={<HiLocationMarker />}
@@ -30,10 +30,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  h4 {
-    width: 15%;
-  }
-
   @media screen and (max-width: 768px) {
     & {
       flex-direction: column;
@@ -41,7 +37,7 @@ const Container = styled.div`
       text-align: left;
     }
 
-    h4 {
+    h3 {
       width: 100%;
     }
   }

@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import Context from "./context/Context";
 import MealDetail from "./pages/MealDetail";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:categoryId" element={<Menu />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/meals/:id" element={<MealDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

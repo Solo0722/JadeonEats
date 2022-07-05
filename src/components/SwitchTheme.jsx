@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { useThemeSwitcher } from "react-css-theme-switcher";
 import { Switch, Button } from "antd";
 
@@ -26,11 +27,12 @@ export default function SwitchTheme() {
   return (
     <div className="App">
       <Button
+        type="ghost"
         icon={
           isDarkMode ? (
-            <FaMoon style={{ marginTop: "5px" }} />
+            <FiMoon style={{ marginTop: "5px" }} />
           ) : (
-            <FaSun style={{ marginTop: "5px" }} />
+            <FiSun style={{ marginTop: "5px" }} />
           )
         }
         onClick={switchTheme}
