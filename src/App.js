@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import Context from "./context/Context";
+import MealDetail from "./pages/MealDetail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/meals/:id" element={<MealDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />

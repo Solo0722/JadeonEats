@@ -47,7 +47,10 @@ const DeliveryDetails = ({ next }) => {
             { required: true, message: "Please input your delivery address!" },
           ]}
         >
-          <Input type={"text"} />
+          <Input
+            type={"text"}
+            defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
+          />
         </Form.Item>
         <Form.Item>
           <div

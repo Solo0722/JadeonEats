@@ -1,6 +1,7 @@
-import { Spin, message } from "antd";
+import { Spin, message, Input } from "antd";
 import React, { useContext, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
+import DeliverTo from "../components/DeliverTo";
 import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
@@ -14,15 +15,18 @@ const Menu = () => {
       <Navbar />
       <MenuContainer>
         <SideBar />
-        <MealsContainer>
-          {!products ? (
-            <Spin />
-          ) : (
-            products.map((product) => (
-              <MealCard product={product} handleAddToCart={handleAddToCart} />
-            ))
-          )}
-        </MealsContainer>
+        <Wrapper>
+          <DeliverTo />
+          <MealsContainer>
+            {!products ? (
+              <Spin />
+            ) : (
+              products.map((product) => (
+                <MealCard product={product} handleAddToCart={handleAddToCart} />
+              ))
+            )}
+          </MealsContainer>
+        </Wrapper>
       </MenuContainer>
     </>
   );
@@ -38,14 +42,11 @@ const MenuContainer = styled.div`
   overflow-x: hidden;
 `;
 
-const MealsContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  margin: 20px 0;
-  width: 65%;
-  margin-left: 25%;
-  margin-top: 20px;
-  flex-wrap: wrap;
+const Wrapper = styled.div`
+  width: 100%;
+  margin-left: 20%;
+  margin-bottom: 20px;
+  padding: 5px;
 
   @media screen and (max-width: 768px) {
     & {
@@ -53,6 +54,12 @@ const MealsContainer = styled.div`
       margin-left: 0;
     }
   }
+`;
+
+const MealsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 export default Menu;

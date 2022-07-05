@@ -1,19 +1,53 @@
 import React, { createContext, useState, useEffect } from "react";
 import Commerce from "@chec/commerce.js";
 import { Button, List } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 
 export const AppContext = createContext();
 
 const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
 
 const categories = [
-  "Breakfast",
-  "Lunch",
-  "Supper",
-  "Snacks",
-  "Desserts",
-  "Continental",
-  "Local",
+  {
+    name: "Deals",
+    image: "/deals.png",
+  },
+  {
+    name: "Breakfast",
+    image: "/coffeeandtea.png",
+  },
+  {
+    name: "Lunch",
+    image: "/FastFood_BrowseHome@3x.png",
+  },
+  {
+    name: "Supper",
+    image: "/comfortfood.png",
+  },
+  {
+    name: "Local",
+    image: "/comfortfood.png",
+  },
+  {
+    name: "Continental",
+    image: "/american.png",
+  },
+  {
+    name: "Bakery",
+    image: "/bakery.png",
+  },
+  {
+    name: "Desserts",
+    image: "/dessert.png",
+  },
+  {
+    name: "Drinks",
+    image: "/coffeeandtea.png",
+  },
+  {
+    name: "Snacks",
+    image: "/icecreamandyogort.png",
+  },
 ];
 
 const Context = ({ children }) => {
@@ -31,10 +65,6 @@ const Context = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
   }, [deliveryAddress]);
-
-  // console.log(products);
-  // console.log(cart);
-  // console.log(checkoutToken);
 
   //fetch products
   const fetchProducts = async () => {
@@ -130,10 +160,32 @@ const Context = ({ children }) => {
     return (
       <>
         <List bordered={false}>
+          <List.Item style={{ border: "none" }}>
+            <Button
+              icon={<HomeOutlined style={{ marginRight: "10px" }} />}
+              type="text"
+              block
+              style={{ textAlign: "left" }}
+            >
+              Home
+            </Button>
+          </List.Item>
           {categories.map((cat) => (
-            <List.Item>
-              <Button type="text" block style={{ textAlign: "left" }}>
-                {cat}
+            <List.Item key={cat} style={{ border: "none" }}>
+              <Button
+                type="text"
+                block
+                icon={
+                  <img
+                    src={cat.image}
+                    width={25}
+                    height={25}
+                    style={{ marginRight: "10px" }}
+                  />
+                }
+                style={{ textAlign: "left" }}
+              >
+                {cat.name}
               </Button>
             </List.Item>
           ))}

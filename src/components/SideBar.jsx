@@ -9,24 +9,26 @@ const SideBar = () => {
   const { renderCategoryList } = useContext(AppContext);
 
   return (
-    <SidebarContainer>
+    <SidebarContainer className="sidebar">
       <TitleContainer>
-        <h3>Categories</h3>
       </TitleContainer>
-      <SearchTab />
       <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
-      
     </SidebarContainer>
   );
 };
 
 const SidebarContainer = styled.div`
-  width: 25%;
-  padding: 2rem 1rem;
+  width: 20%;
+  /* padding: 2rem 1rem; */
+  padding:10px 0;
   position: fixed;
-  top: 65px;
+  top: 50px;
   bottom: 0;
   overflow-y: scroll;
+
+  /* &::-webkit-scrollbar {
+    display: none;
+  } */
 
   @media screen and (max-width: 768px) {
     & {

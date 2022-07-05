@@ -55,7 +55,6 @@ const FooterContainer = styled.footer`
   width: 60%;
   margin: 0 auto;
   min-height: 100px;
-  color: rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;

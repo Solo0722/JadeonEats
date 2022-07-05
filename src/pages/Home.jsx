@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import DeliveryAddressForm from "../components/DeliveryAddressForm";
 import Navbar from "../components/Navbar";
 import { Button } from "antd";
 import Footer from "../components/Footer";
+import { AppContext } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const { deliveryAddress } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (deliveryAddress) {
+  //     navigate("/menu");
+  //   }
+  // }, []);
+
   return (
     <>
       <Navbar />
@@ -46,7 +57,6 @@ const LandingContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 const DeliveryAddressContainer = styled.div`
@@ -125,7 +135,6 @@ const ImgContainer = styled.div`
 
 const AdvertContainer = styled.div`
   min-height: 70vh;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px 0;
 `;
 

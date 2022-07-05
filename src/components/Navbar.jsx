@@ -1,41 +1,38 @@
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Button, Badge, Switch } from "antd";
+import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { Button, Badge } from "antd";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import Drawerbar from "./Drawerbar";
 import { AppContext } from "../context/Context";
-import SwitchContainer from "./SwitchContainer";
+import SwitchTheme from "./SwitchTheme";
 
 const Navbar = () => {
   const { cart } = useContext(AppContext);
   const location = useLocation();
   return (
-    <NavContainer
-      style={{
-        background: `${location.pathname !== "/" ? "#21212b" : null}`,
-      }}
-    >
+    <NavContainer className="navbar">
       <LogoContainer>
-        <Button
-          type="text"
-          href="/"
-          icon={<img src="/salad.png" width={30} height={30} />}
-          style={{ display: "flex", flexDirection: "row" }}
+        {/* <div
+          style={{ display: "flex", flexDirection: "row", textAlign: "left" }}
         >
-          <h3 style={{ marginLeft: "10px" }}>JadeonEats</h3>
-        </Button>
+          <img src="/salad.png" width={30} height={30} />
+          <h4 style={{ margin: "5px 0px 0px 7px" }}>
+            <span style={{ color: "gold" }}>Jadeon</span>Eats
+          </h4>
+        </div> */}
+        <h3>
+          Jadeon<span style={{ fontWeight: "bolder" }}>Eats</span>
+        </h3>
       </LogoContainer>
 
       <ToolsContainer>
-        {/* <AuthenticationContainer> */}
-        {/* <Button href="/login">Login/Sign up</Button> */}
-        {/* <Button href="/signup">Sign Up</Button> */}
-        {/* <SwitchContainer /> */}
-        {/* </AuthenticationContainer> */}
+        <SwitchTheme />
+        <Button icon={<SearchOutlined />} />
         <CartContainer
           style={{
             display: `${location.pathname == "/" ? "none" : "flex"}`,
+            marginLeft: "5px",
           }}
         >
           <Badge
@@ -59,19 +56,15 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
   width: 100%;
-  height: 65px;
+  height: 50px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
 
   position: sticky;
   top: 0%;
-  backdrop-filter: blur(10px);
   z-index: 100;
-  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const LogoContainer = styled.div``;

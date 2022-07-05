@@ -1,0 +1,29 @@
+@import "~antd/lib/style/color/colorPalette.less";
+@import "~antd/dist/antd.less";
+@import "~antd/lib/style/themes/default.less"; //will import light theme colors defined by antd
+@primary-color: gold;
+
+@font-face {
+  font-family: "pt_sansregular";
+  src: url("./ptsans-regular-webfont.woff2") format("woff2"),
+    url("./ptsans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: snow;
+  font-family: "pt_sansregular", "PT_Sans" sans-serif;
+}
+
+.navbar {
+  background-color: lavender;
+}
+
+// .sidebar {
+//   background-color: lavender;
+// }
+
+.mealcard {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

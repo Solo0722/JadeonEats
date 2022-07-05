@@ -29,7 +29,6 @@ const DeliveryAddressForm = () => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
-      // style={{ display: "flex", flexDirection: "row", width: "100%" }}
     >
       <Form.Item
         name="deliveryAddress"
@@ -43,10 +42,6 @@ const DeliveryAddressForm = () => {
         <Input
           prefix={<HiLocationMarker />}
           size={"large"}
-          style={{
-            background: "rgba(0,0,0,0.2)",
-            backdropFilter: "blur(10px)",
-          }}
           placeholder="Enter delivery address eg. Autonomy Hall room 25"
         />
       </Form.Item>
