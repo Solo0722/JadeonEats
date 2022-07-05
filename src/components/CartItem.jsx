@@ -47,6 +47,7 @@ const CartItemContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -80,14 +81,16 @@ const ImgContainer = styled.div`
 `;
 const ItemDetailsContainer = styled.div`
   display: flex;
-  align-items: left;
+  align-items: flex-start;
   flex-direction: column;
+  justify-content: center;
   height: 100%;
 
   @media screen and (max-width: 768px) {
-    h3 {
-      text-align: center;
-    }
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
   }
 `;
 
@@ -100,6 +103,7 @@ const AmountContainer = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: row;
     width: 100%;
+    margin-top: 10px;
   }
 `;
 

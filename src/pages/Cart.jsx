@@ -15,8 +15,6 @@ const Cart = () => {
     fetchCart,
   } = useContext(AppContext);
 
-  
-
   const EmptyCart = () => {
     return (
       <Empty description="No items in cart">
@@ -37,7 +35,9 @@ const Cart = () => {
       <FilledCartContainer>
         <TitleContainer>
           <h2>Shopping Cart</h2>
-          <h2>Subtotal : {cart.subtotal.formatted_with_symbol}</h2>
+          <h3 style={{ opacity: "0.8" }}>
+            Subtotal : {cart.subtotal.formatted_with_symbol}
+          </h3>
         </TitleContainer>
         <CartItemsContainer>
           <List>
@@ -61,12 +61,12 @@ const Cart = () => {
           >
             Continue Shopping
           </Button>
-          <div>
+          <CheckoutBtnsContainer>
             <Button
               // block
               type="primary"
               href={"/checkout"}
-              style={{ marginRight: "20px" }}
+              style={{ marginRight: "10px" }}
             >
               Checkout
             </Button>
@@ -77,7 +77,7 @@ const Cart = () => {
             >
               Empty Cart
             </Button>
-          </div>
+          </CheckoutBtnsContainer>
         </OrderContainer>
       </FilledCartContainer>
     );
@@ -136,6 +136,8 @@ const TitleContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 90%;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -148,7 +150,30 @@ const OrderContainer = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 768px) {
-    width: 90%;
+    & {
+      width: 90%;
+      flex-direction: column;
+      align-items:baseline;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+const CheckoutBtnsContainer = styled.div`
+  @media screen and (max-width: 768px) {
+    & {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    button,
+    a {
+      width: 100%;
+      margin: 10px 0;
+    }
   }
 `;
 
