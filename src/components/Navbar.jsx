@@ -2,7 +2,7 @@ import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, Badge } from "antd";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Drawerbar from "./Drawerbar";
 import { AppContext } from "../context/Context";
 import SwitchTheme from "./SwitchTheme";
@@ -10,11 +10,12 @@ import SwitchTheme from "./SwitchTheme";
 const Navbar = () => {
   const { cart } = useContext(AppContext);
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <NavContainer className="navbar">
       <LogoContainer>
         <Drawerbar />
-        <h3>
+        <h3 onClick={() => navigate("/menu")}>
           Jadeon
           <span style={{ fontWeight: "bolder", color: "orangered" }}>Eats</span>
         </h3>
@@ -49,7 +50,7 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
   width: 100%;
-  height: 50px;
+  height: 60px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -71,6 +72,7 @@ const LogoContainer = styled.div`
     margin-top: 10px;
     margin-left: 7px;
     font-family: "Poppins";
+    cursor: pointer;
   }
 `;
 const SearchContainer = styled.div``;

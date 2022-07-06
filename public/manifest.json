@@ -1,12 +1,12 @@
 {
   "theme_color": "gold",
-  "background_color": "#181820",
+  "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "name": "JadeonEats",
   "short_name": "JadEats",
-  "description": "A food delivery company based in University of Winneba, Ghana - Tanoso campus",
+  "description": "Order your food online and get it delivered to you in seconds",
   "icons": [
     {
       "src": "/icon-192x192.png",
