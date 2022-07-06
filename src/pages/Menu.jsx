@@ -9,17 +9,19 @@ import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
 
 const Menu = () => {
-  const {
-    products,
-    handleAddToCart,
-    fetchProducts,
-  } = useContext(AppContext);
+  const { products, handleAddToCart, fetchProducts, fetchSpecificCategory } =
+    useContext(AppContext);
 
-  const { categoryId } = useParams();
+  const { category } = useParams();
+  console.log(category);
 
   useEffect(() => {
-    fetchProducts();
-  }, [categoryId]);
+    if (category === undefined || category === null) {
+      fetchProducts();
+    } else {
+      fetchSpecificCategory(category);
+    }
+  }, [category]);
 
   return (
     <>

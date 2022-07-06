@@ -13,12 +13,12 @@ import Search from "./pages/Search";
 
 function App() {
   return (
-    <Context>
-      <Router>
+    <Router>
+      <Context>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/menu/:categoryId" element={<Menu />} />
+          <Route path="/menu/:category" element={<Menu />} />
           <Route path="/search" element={<Search />} />
           <Route path="/meals/:id" element={<MealDetail />} />
           <Route path="/login" element={<Login />} />
@@ -27,8 +27,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </Router>
-    </Context>
+      </Context>
+    </Router>
   );
 }
 

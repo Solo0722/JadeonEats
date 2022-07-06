@@ -52,13 +52,14 @@ const Footer = () => {
 };
 
 const FooterContainer = styled.footer`
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
+  padding: 10px 0;
   min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   p {
     text-align: center;
   }

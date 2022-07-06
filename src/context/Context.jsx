@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import Commerce from "@chec/commerce.js";
 import { Button, List } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
 
 export const AppContext = createContext();
 
@@ -72,6 +73,8 @@ const Context = ({ children }) => {
     JSON.parse(localStorage.getItem("deliveryAddress"))
   );
 
+  const location = useLocation();
+
   useEffect(() => {
     localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
   }, [deliveryAddress]);
@@ -84,6 +87,14 @@ const Context = ({ children }) => {
 
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
+  };
+
+  const fetchSpecificCategory = async (category) => {
+    const { data } = await commerce.products.list({
+      category_slug: [`${category}`],
+    });
+    console.log(data);
+    setProducts(data);
   };
 
   const handleAddToCart = async (productId, quantity) => {
@@ -161,7 +172,13 @@ const Context = ({ children }) => {
               type="text"
               block
               href="/menu"
-              style={{ textAlign: "left" }}
+              style={{
+                textAlign: "left",
+                borderLeft: `${
+                  location.pathname === "/menu" ? "2px solid orangered" : ""
+                }`,
+                opacity: `${location.pathname === "/menu/" ? "1" : "0.7"}`,
+              }}
             >
               Home
             </Button>
@@ -171,7 +188,7 @@ const Context = ({ children }) => {
               <Button
                 type="text"
                 block
-                href={`/menu/${cat.id}`}
+                href={`/menu/${cat.name.toLowerCase()}`}
                 icon={
                   <img
                     src={cat.image}
@@ -180,7 +197,19 @@ const Context = ({ children }) => {
                     style={{ marginRight: "10px" }}
                   />
                 }
-                style={{ textAlign: "left" }}
+                style={{
+                  textAlign: "left",
+                  borderLeft: `${
+                    location.pathname === `/menu/${cat.name.toLowerCase()}`
+                      ? "2px solid orangered"
+                      : ""
+                  }`,
+                  opacity: `${
+                    location.pathname === `/menu/${cat.name.toLowerCase()}`
+                      ? "1"
+                      : "0.7"
+                  }`,
+                }}
               >
                 {cat.name}
               </Button>
@@ -222,6 +251,7 @@ const Context = ({ children }) => {
         fetchShippingOption,
         deliveryAddress,
         setDeliveryAddress,
+        fetchSpecificCategory,
       }}
     >
       {children}

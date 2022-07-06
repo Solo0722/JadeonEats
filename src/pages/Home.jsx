@@ -6,6 +6,8 @@ import { Button } from "antd";
 import Footer from "../components/Footer";
 import { AppContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import GoogleMapReact from "google-map-react";
+import { HiLocationMarker } from "react-icons/hi";
 
 const Home = () => {
   const { deliveryAddress } = useContext(AppContext);
@@ -17,13 +19,22 @@ const Home = () => {
   //   }
   // }, []);
 
+  const location = {
+    address: "University of Winneba, Kumasi campus - Ghana",
+    lat: "",
+    lng: "",
+  };
+
   return (
     <>
       <Navbar />
       <HomeContainer>
         <LandingContainer>
           <DeliveryAddressContainer>
-            <h1>Order food to your door.</h1>
+            <h1>
+              Order <span style={{ color: "orangered" }}>food</span> to your
+              door.
+            </h1>
             <DeliveryAddressForm />
             <Button type="text" href="/login" style={{ marginLeft: "-10px" }}>
               Sign in to save your address
@@ -36,6 +47,16 @@ const Home = () => {
         <AdvertContainer></AdvertContainer>
         <MapContainer>
           <h2>Where we are located</h2>
+          <MapWrapper>
+            {/* <GoogleMapReact
+              bootstrapURLKeys={{key:''}}
+              defaultCenter={location}
+              defaultZoom={17}
+            >
+              <HiLocationMarker />
+              <p>{location.address}</p>
+            </GoogleMapReact> */}
+          </MapWrapper>
         </MapContainer>
       </HomeContainer>
       <Footer />
@@ -141,6 +162,12 @@ const AdvertContainer = styled.div`
 const MapContainer = styled.div`
   height: 80vh;
   padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const MapWrapper = styled.div`
+  width: 100%;
 `;
 
 export default Home;
