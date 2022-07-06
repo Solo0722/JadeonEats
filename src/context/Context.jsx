@@ -177,7 +177,8 @@ const Context = ({ children }) => {
                 borderLeft: `${
                   location.pathname === "/menu" ? "2px solid orangered" : ""
                 }`,
-                opacity: `${location.pathname === "/menu/" ? "1" : "0.7"}`,
+                opacity: `${location.pathname === "/menu" ? "1" : "0.7"}`,
+                fontWeight: `${location.pathname === "/menu" ? "bold" : ""}`,
               }}
             >
               Home
@@ -208,6 +209,11 @@ const Context = ({ children }) => {
                     location.pathname === `/menu/${cat.name.toLowerCase()}`
                       ? "1"
                       : "0.7"
+                  }`,
+                  fontWeight: `${
+                    location.pathname === `/menu/${cat.name.toLowerCase()}`
+                      ? "bold"
+                      : ""
                   }`,
                 }}
               >

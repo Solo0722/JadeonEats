@@ -71,7 +71,7 @@ const LogoContainer = styled.div`
     font-size: 1.2rem;
     margin-top: 10px;
     margin-left: 7px;
-    font-family: "Poppins";
+    /* font-family: "Poppins"; */
     cursor: pointer;
   }
 `;
