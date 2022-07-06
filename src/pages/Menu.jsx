@@ -13,7 +13,6 @@ const Menu = () => {
     useContext(AppContext);
 
   const { category } = useParams();
-  console.log(category);
 
   useEffect(() => {
     if (category === undefined || category === null) {
@@ -35,7 +34,11 @@ const Menu = () => {
               <Spin />
             ) : (
               products.map((product) => (
-                <MealCard product={product} handleAddToCart={handleAddToCart} />
+                <MealCard
+                  key={product.id}
+                  product={product}
+                  handleAddToCart={handleAddToCart}
+                />
               ))
             )}
           </MealsContainer>

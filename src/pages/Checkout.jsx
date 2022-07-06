@@ -5,6 +5,7 @@ import DeliveryDetails from "../components/DeliveryDetails";
 import { ShopFilled } from "@ant-design/icons";
 import PaymentDetails from "../components/PaymentDetails";
 import { AppContext } from "../context/Context";
+import Navbar from "../components/Navbar";
 
 const { Step } = Steps;
 
@@ -42,15 +43,18 @@ const Checkout = () => {
   ];
 
   return (
-    <CheckoutContainer>
-      <Steps current={current} size="small">
-        {steps.map((item) => (
-          <Step key={item.title} title={item.title} />
-        ))}
-      </Steps>
-      <StepsContent>{steps[current].content}</StepsContent>
-      {/* <DeliveryDetails /> */}
-    </CheckoutContainer>
+    <>
+      <Navbar />
+      <CheckoutContainer>
+        <Steps current={current} size="small">
+          {steps.map((item) => (
+            <Step key={item.title} title={item.title} />
+          ))}
+        </Steps>
+        <StepsContent>{steps[current].content}</StepsContent>
+        {/* <DeliveryDetails /> */}
+      </CheckoutContainer>
+    </>
   );
 };
 

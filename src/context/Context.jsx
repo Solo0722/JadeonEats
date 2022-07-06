@@ -89,11 +89,23 @@ const Context = ({ children }) => {
     setCart(await commerce.cart.retrieve());
   };
 
+  const fetchSingleProduct = async (productId) => {
+    const { data } = await commerce.products.retrieve(`${productId}`);
+    console.log(data);
+    return data;
+  };
+
   const fetchSpecificCategory = async (category) => {
     const { data } = await commerce.products.list({
       category_slug: [`${category}`],
     });
-    console.log(data);
+    setProducts(data);
+  };
+
+  const fetchProductsBySearch = async (searchTerm) => {
+    const { data } = await commerce.products.list({
+      query: `${searchTerm}`,
+    });
     setProducts(data);
   };
 
@@ -185,7 +197,7 @@ const Context = ({ children }) => {
             </Button>
           </List.Item>
           {categories.map((cat) => (
-            <List.Item key={cat} style={{ border: "none" }}>
+            <List.Item key={cat.name} style={{ border: "none" }}>
               <Button
                 type="text"
                 block
@@ -258,6 +270,8 @@ const Context = ({ children }) => {
         deliveryAddress,
         setDeliveryAddress,
         fetchSpecificCategory,
+        fetchProductsBySearch,
+        fetchSingleProduct,
       }}
     >
       {children}

@@ -103,7 +103,7 @@ const PaymentDetails = ({ prev }) => {
           >
             <Button onClick={() => prev()}>Back</Button>
             <Button type="primary" htmlType="submit">
-              Pay {cart.subtotal.formatted_with_symbol}
+              Pay {cart?.subtotal?.formatted_with_symbol}
             </Button>
           </div>
         </Form.Item>

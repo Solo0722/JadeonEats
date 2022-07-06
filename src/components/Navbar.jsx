@@ -23,7 +23,14 @@ const Navbar = () => {
 
       <ToolsContainer>
         <SwitchTheme />
-        <Button icon={<SearchOutlined />} type="ghost" />
+        <Button
+          icon={<SearchOutlined />}
+          type="ghost"
+          onClick={() => navigate("/search")}
+          style={{
+            display: `${location.pathname == "/" ? "none" : "block"}`,
+          }}
+        />
         <CartContainer
           style={{
             display: `${location.pathname == "/" ? "none" : "flex"}`,
@@ -71,7 +78,6 @@ const LogoContainer = styled.div`
     font-size: 1.2rem;
     margin-top: 10px;
     margin-left: 7px;
-    /* font-family: "Poppins"; */
     cursor: pointer;
   }
 `;
