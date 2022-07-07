@@ -28,12 +28,20 @@ const Navbar = () => {
           type="ghost"
           onClick={() => navigate("/search")}
           style={{
-            display: `${location.pathname == "/" ? "none" : "block"}`,
+            display: `${
+              location.pathname == "/" || location.pathname == "/checkout"
+                ? "none"
+                : "block"
+            }`,
           }}
         />
         <CartContainer
           style={{
-            display: `${location.pathname == "/" ? "none" : "flex"}`,
+            display: `${
+              location.pathname == "/" || location.pathname == "/checkout"
+                ? "none"
+                : "block"
+            }`,
             marginLeft: "5px",
           }}
         >

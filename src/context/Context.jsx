@@ -65,13 +65,17 @@ const Context = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
-  const [shippingCountry, setShippingCountry] = useState("");
-  const [shippingSubdivision, setShippingSubdivision] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("Ghana");
+  const [shippingSubdivision, setShippingSubdivision] = useState("Ashanti");
   const [shippingOption, setShippingOption] = useState("");
+  const [order, setOrder] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [deliveryAddress, setDeliveryAddress] = useState(
     JSON.parse(localStorage.getItem("deliveryAddress"))
   );
+
+  const [shippingData, setShippingData] = useState(null);
 
   const location = useLocation();
 
@@ -145,33 +149,33 @@ const Context = ({ children }) => {
     }
   };
 
-  const fetchShippingCountry = async (checkoutTokenId) => {
-    const { countries } = await commerce.services.localeListShippingCountries(
-      checkoutTokenId
-    );
-    setShippingCountry(countries.GH);
-    console.log(shippingCountry);
-  };
-
-  const fetchShippingSubdivision = async (checkoutTokenId) => {
-    const { subdivisions } =
-      await commerce.services.localeListShippingSubdivisions(
-        checkoutTokenId,
-        "GH"
-      );
-    setShippingSubdivision(subdivisions);
-  };
-
-  const fetchShippingOption = async (
-    checkoutTokenId,
-    country,
-    region = null
-  ) => {
+  const fetchShippingOption = async (checkoutTokenId) => {
     const options = await commerce.checkout.getShippingOptions(
       checkoutTokenId,
-      { country, region }
+      { country: "GH", region: "AH" }
     );
+    console.log(options);
     setShippingOption(options[0].id);
+  };
+
+  //refresh cart
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  };
+
+  //capture the order
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
+      setOrder(incomingOrder);
+      refreshCart();
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
   };
 
   const renderCategoryList = () => {
@@ -250,6 +254,10 @@ const Context = ({ children }) => {
     fetchCart();
   }, []);
 
+  useEffect(() => {
+    checkoutToken && fetchShippingOption(checkoutToken.id);
+  }, [checkoutToken]);
+
   return (
     <AppContext.Provider
       value={{
@@ -264,14 +272,16 @@ const Context = ({ children }) => {
         renderCategoryList,
         generateCheckoutToken,
         checkoutToken,
-        fetchShippingCountry,
-        fetchShippingSubdivision,
         fetchShippingOption,
         deliveryAddress,
         setDeliveryAddress,
         fetchSpecificCategory,
         fetchProductsBySearch,
         fetchSingleProduct,
+        shippingData,
+        setShippingData,
+        shippingOption,
+        handleCaptureCheckout
       }}
     >
       {children}

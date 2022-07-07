@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Steps } from "antd";
+import { Button, Steps } from "antd";
 import DeliveryDetails from "../components/DeliveryDetails";
 import { ShopFilled } from "@ant-design/icons";
 import PaymentDetails from "../components/PaymentDetails";
@@ -10,16 +10,11 @@ import Navbar from "../components/Navbar";
 const { Step } = Steps;
 
 const Checkout = () => {
-  const { generateCheckoutToken, checkoutToken, cart, fetchShippingCountry } =
-    useContext(AppContext);
+  const { generateCheckoutToken, order, cart } = useContext(AppContext);
 
   useEffect(() => {
     cart && generateCheckoutToken();
   }, [cart]);
-
-  useEffect(() => {
-    checkoutToken && fetchShippingCountry(checkoutToken.id);
-  }, [checkoutToken]);
 
   const [current, setCurrent] = useState(0);
 
@@ -31,6 +26,17 @@ const Checkout = () => {
     setCurrent(current - 1);
   };
 
+  const Confirmation = () => {
+    return (
+      <div>
+        <h2>Thank You for your purchase</h2>
+        <Button type="primary" href="/menu">
+          Back to home
+        </Button>
+      </div>
+    );
+  };
+
   const steps = [
     {
       title: "Delivery Details",
@@ -38,7 +44,11 @@ const Checkout = () => {
     },
     {
       title: "Payment Details",
-      content: <PaymentDetails prev={prev} />,
+      content: <PaymentDetails prev={prev} next={next} />,
+    },
+    {
+      title: "Confirmation",
+      content: <Confirmation />,
     },
   ];
 
@@ -60,13 +70,13 @@ const Checkout = () => {
 
 const CheckoutContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   flex-direction: column;
   width: 60%;
   margin: 0 auto;
   margin-top: 30px;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 
   @media screen and (max-width: 768px) {
     & {

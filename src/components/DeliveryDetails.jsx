@@ -1,10 +1,14 @@
-import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import React, { useContext } from "react";
+import { Form, Input, Button } from "antd";
 import styled from "styled-components";
+import { AppContext } from "../context/Context";
 
 const DeliveryDetails = ({ next }) => {
+  const { setShippingData } = useContext(AppContext);
+
   const onFinish = (values) => {
     console.log("Success:", values);
+    setShippingData(values);
     next();
   };
 
@@ -28,7 +32,21 @@ const DeliveryDetails = ({ next }) => {
           name="fullname"
           rules={[{ required: true, message: "Please input your full name!" }]}
         >
-          <Input />
+          <Input placeholder="e.g  John Doe" />
+        </Form.Item>
+
+        <Form.Item
+          label="Email address"
+          name="email"
+          rules={[
+            {
+              required: true,
+              type: "email",
+              message: "Please input your email address!",
+            },
+          ]}
+        >
+          <Input placeholder="e.g johndoe@gmail.com" />
         </Form.Item>
 
         <Form.Item
@@ -38,7 +56,7 @@ const DeliveryDetails = ({ next }) => {
             { required: true, message: "Please input your phone number!" },
           ]}
         >
-          <Input type={"tel"} />
+          <Input type={"tel"} placeholder="e.g +233591172136" />
         </Form.Item>
         <Form.Item
           label="Delivery Address"
@@ -48,6 +66,7 @@ const DeliveryDetails = ({ next }) => {
           ]}
         >
           <Input
+            placeholder="eg. Autonomy Hall room 25"
             type={"text"}
             defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
           />

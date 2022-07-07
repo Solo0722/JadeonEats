@@ -1,13 +1,61 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Input, Button, Form } from "antd";
+import { Input, Button, Form, Divider } from "antd";
 import { AppContext } from "../context/Context";
+import {
+  Elements,
+  CardElement,
+  ElementsConsumer,
+} from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import ReviewOrder from "./ReviewOrder";
 
-const PaymentDetails = ({ prev }) => {
-  const { cart } = useContext(AppContext);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-  const onFinish = (values) => {
+const PaymentDetails = ({ prev,next }) => {
+  const { checkoutToken, shippingData, shippingOption, handleCaptureCheckout } =
+    useContext(AppContext);
+
+  const onFinish = async (values, elements, stripe) => {
     console.log("Success:", values);
+
+    if (!stripe || !elements) return;
+
+    const cardElement = elements.getElement(CardElement);
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+    });
+
+    if (error) {
+      console.log("Error:", error);
+    } else {
+      const orderData = {
+        line_items: checkoutToken.live.line_items,
+        customer: {
+          fullname: shippingData.fullname,
+          email: shippingData.email,
+        },
+        shipping: {
+          name: "Primary",
+          street: shippingData.address,
+          country: "Ghana",
+          country_state: "Ashanti",
+        },
+        fulfillment: {
+          shipping_method: shippingOption,
+        },
+        payment: {
+          gateway: "stripe",
+          stripe: {
+            payment_method_id: paymentMethod.id,
+          },
+        },
+      };
+      handleCaptureCheckout(checkoutToken.id, orderData);
+      next();
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -16,98 +64,48 @@ const PaymentDetails = ({ prev }) => {
 
   return (
     <PaymentDetailsContainer>
-      <Form
-        name="basic"
-        layout="vertical"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-        style={{ width: "100%" }}
-      >
-        <Form.Item
-          label="Email address"
-          name="email"
-          rules={[
-            { required: true, message: "Please input your email address!" },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Name on card"
-          name="cardholdername"
-          rules={[
-            { required: true, message: "Please input your cardholder name!" },
-          ]}
-        >
-          <Input type={"text"} />
-        </Form.Item>
-        <Form.Item
-          label="Card number"
-          name="card_number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your card number!",
-            },
-          ]}
-        >
-          <Input type={"text"} />
-        </Form.Item>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-          }}
-        >
-          <Form.Item
-            label="Expiration date"
-            name="expiration_date"
-            rules={[
-              {
-                required: true,
-                message: "Please input your expiration date!",
-              },
-            ]}
-            style={{ width: "70%" }}
-          >
-            <Input type="date" />
-          </Form.Item>
-
-          <Form.Item
-            label="CVC"
-            name="cvc"
-            rules={[
-              {
-                required: true,
-                message: "Please input your cvc!",
-              },
-            ]}
-            style={{ width: "25%" }}
-          >
-            <Input type={"text"} />
-          </Form.Item>
-        </div>
-        <Form.Item>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            <Button onClick={() => prev()}>Back</Button>
-            <Button type="primary" htmlType="submit">
-              Pay {cart?.subtotal?.formatted_with_symbol}
-            </Button>
-          </div>
-        </Form.Item>
-      </Form>
+      <ReviewOrder checkoutToken={checkoutToken} />
+      <h2 style={{ fontWeight: "bold", marginBottom: "10px" }}>
+        Payment Method
+      </h2>
+      <Elements stripe={stripePromise}>
+        <ElementsConsumer>
+          {({ elements, stripe }) => (
+            <Form
+              name="basic"
+              layout="vertical"
+              initialValues={{ remember: true }}
+              onFinish={(e) => onFinish(e, elements, stripe)}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+              style={{ width: "100%" }}
+            >
+              <CardElement />
+              <br />
+              <Form.Item>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <Button onClick={() => prev()}>Back</Button>
+                  <Button type="primary" htmlType="submit">
+                    Pay {checkoutToken.live.subtotal.formatted_with_symbol}
+                  </Button>
+                </div>
+              </Form.Item>
+            </Form>
+          )}
+        </ElementsConsumer>
+      </Elements>
+      <Divider />
+      <p style={{ textAlign: "center" }}>or</p>
+      <Button block style={{ background: "blue", color: "#fff" }}>
+        Cash on Delivery
+      </Button>
     </PaymentDetailsContainer>
   );
 };

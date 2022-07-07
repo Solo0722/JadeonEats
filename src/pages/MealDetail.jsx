@@ -4,16 +4,17 @@ import {
   StarFilled,
   StarTwoTone,
 } from "@ant-design/icons";
-import { Button, Spin } from "antd";
+import { Button, Divider, Spin } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
 
 const MealDetail = () => {
-  const { products, handleAddToCart, fetchSingleProduct } =
+  const { products, handleAddToCart, fetchSpecificCategory } =
     useContext(AppContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -22,6 +23,10 @@ const MealDetail = () => {
     const prod = products.filter((p) => p.id === id);
     setProduct(prod[0]);
   }, [id]);
+
+  useEffect(() => {
+    fetchSpecificCategory(product?.categories[0].name);
+  }, [id, product]);
 
   return (
     <>
@@ -77,8 +82,22 @@ const MealDetail = () => {
               </p>
             </MealDetailContainer>
           )}
+          <Divider />
           <MoreContainer>
             <h2>More for you</h2>
+            <MealsContainer>
+              {!products ? (
+                <Spin />
+              ) : (
+                products.map((product) => (
+                  <MealCard
+                    key={product.id}
+                    product={product}
+                    handleAddToCart={handleAddToCart}
+                  />
+                ))
+              )}
+            </MealsContainer>
           </MoreContainer>
         </Wrapper>
       </MenuContainer>
@@ -113,6 +132,7 @@ const Wrapper = styled.div`
 const MealDetailContainer = styled.div`
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 20px;
 `;
 
 const ImgContainer = styled.div`
@@ -135,6 +155,17 @@ const AmountWrapper = styled.div`
 
 const MoreContainer = styled.div`
   margin-top: 20px;
+
+  h2 {
+    text-align: center;
+    font-weight: bolder;
+  }
+`;
+
+const MealsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 export default MealDetail;
