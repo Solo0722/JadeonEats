@@ -9,7 +9,7 @@ const DeliverTo = () => {
 
   return (
     <Container>
-      <h3>Deliver To:</h3>
+      <h3 style={{ fontWeight: "bold" }}>Deliver To:</h3>
       <Input
         style={{ borderRadius: "20px" }}
         prefix={<HiLocationMarker />}
@@ -26,9 +26,14 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 5px 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  h3 {
+    width: 100%;
+    color: orangered;
+  }
 
   @media screen and (max-width: 768px) {
     & {

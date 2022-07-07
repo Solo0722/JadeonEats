@@ -70,11 +70,9 @@ const Context = ({ children }) => {
   const [shippingOption, setShippingOption] = useState("");
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-
   const [deliveryAddress, setDeliveryAddress] = useState(
     JSON.parse(localStorage.getItem("deliveryAddress"))
   );
-
   const [shippingData, setShippingData] = useState(null);
 
   const location = useLocation();
@@ -158,13 +156,11 @@ const Context = ({ children }) => {
     setShippingOption(options[0].id);
   };
 
-  //refresh cart
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
     setCart(newCart);
   };
 
-  //capture the order
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(
@@ -263,25 +259,30 @@ const Context = ({ children }) => {
       value={{
         products,
         cart,
+        shippingData,
+        shippingOption,
+        checkoutToken,
+        deliveryAddress,
+
         fetchCart,
         fetchProducts,
+
         handleAddToCart,
         handleEmptyCart,
         handleRemoveFromCart,
         handleUpdateCartQty,
-        renderCategoryList,
-        generateCheckoutToken,
-        checkoutToken,
+
         fetchShippingOption,
-        deliveryAddress,
-        setDeliveryAddress,
         fetchSpecificCategory,
         fetchProductsBySearch,
         fetchSingleProduct,
-        shippingData,
+        
+        renderCategoryList,
+        generateCheckoutToken,
+        setDeliveryAddress,
+        handleCaptureCheckout,
+
         setShippingData,
-        shippingOption,
-        handleCaptureCheckout
       }}
     >
       {children}

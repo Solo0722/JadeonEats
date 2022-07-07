@@ -34,8 +34,8 @@ const Cart = () => {
     return (
       <FilledCartContainer>
         <TitleContainer>
-          <h2>Shopping Cart</h2>
-          <h3 style={{ opacity: "0.8" }}>
+          <h2 style={{ fontWeight: "bold" }}>Shopping Cart</h2>
+          <h3 style={{ opacity: "0.8", fontWeight: "bold" }}>
             Subtotal : {cart.subtotal.formatted_with_symbol}
           </h3>
         </TitleContainer>
@@ -153,7 +153,7 @@ const OrderContainer = styled.div`
     & {
       width: 90%;
       flex-direction: column;
-      align-items:baseline;
+      align-items: baseline;
     }
 
     button {
