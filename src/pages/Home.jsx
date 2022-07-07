@@ -25,6 +25,42 @@ const Home = () => {
     lng: "",
   };
 
+  const reasons = [
+    {
+      title: "Easy to order",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/easyorder.png",
+    },
+    {
+      title: "Fatest delivery",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/bike2.png",
+    },
+    {
+      title: "Best quality",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/food-delivery.png",
+    },
+  ];
+
+  const reviews = [
+    {
+      name: "Easy to order",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/easyorder.png",
+    },
+    {
+      name: "Fatest delivery",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/bike2.png",
+    },
+    {
+      name: "Best quality",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
+      img: "/food-delivery.png",
+    },
+  ];
+
   return (
     <>
       <Navbar />
@@ -44,20 +80,44 @@ const Home = () => {
             <img src="pic1.png" />
           </ImgContainer>
         </LandingContainer>
-        <AdvertContainer></AdvertContainer>
-        <MapContainer>
+        <AdvertContainer>
+          <h2>Why choose us</h2>
+          <AdWrapper>
+            {reasons.map((reason, i) => (
+              <ReasonCard key={i}>
+                <img src={reason.img} alt="reason-image" />
+                <h2>{reason.title}</h2>
+                <p>{reason.body}</p>
+              </ReasonCard>
+            ))}
+          </AdWrapper>
+        </AdvertContainer>
+        <ReviewsSection>
+          <h2>What others say about us</h2>
+          <AdWrapper2>
+            {reviews.map((review, i) => (
+              <ReviewCard key={i}>
+                <img src={review.img} alt="reason-image" />
+                <h2>{review.name}</h2>
+                <h2>"</h2>
+                <p>{review.body}</p>
+              </ReviewCard>
+            ))}
+          </AdWrapper2>
+        </ReviewsSection>
+        {/* <MapContainer>
           <h2>Where we are located</h2>
           <MapWrapper>
-            {/* <GoogleMapReact
+            <GoogleMapReact
               bootstrapURLKeys={{key:''}}
               defaultCenter={location}
               defaultZoom={17}
             >
               <HiLocationMarker />
               <p>{location.address}</p>
-            </GoogleMapReact> */}
+            </GoogleMapReact>
           </MapWrapper>
-        </MapContainer>
+        </MapContainer> */}
       </HomeContainer>
       <Footer />
     </>
@@ -157,6 +217,92 @@ const ImgContainer = styled.div`
 const AdvertContainer = styled.div`
   min-height: 70vh;
   padding: 10px 0;
+`;
+
+const AdWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
+  @media screen and (max-width: 768px) {
+    & {
+      flex-direction: column;
+    }
+  }
+`;
+
+const ReasonCard = styled.div`
+  width: 270px;
+  min-height: 270px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 7px;
+  margin: 10px 0;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+
+  h2 {
+    color: orangered;
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 100%;
+    }
+  }
+`;
+
+const ReviewsSection = styled.div`
+  min-height: 70vh;
+  padding: 10px 0;
+`;
+
+const AdWrapper2 = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 768px) {
+    & {
+      flex-direction: column;
+    }
+  }
+`;
+
+const ReviewCard = styled.div`
+  width: 270px;
+  min-height: 270px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  margin: 10px 0;
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 100%;
+    }
+  }
 `;
 
 const MapContainer = styled.div`

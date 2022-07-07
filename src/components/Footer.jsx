@@ -63,12 +63,6 @@ const FooterContainer = styled.footer`
   p {
     text-align: center;
   }
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 80%;
-    }
-  }
 `;
 
 const LinksContainer = styled.div`
