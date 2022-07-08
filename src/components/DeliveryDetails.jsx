@@ -27,13 +27,33 @@ const DeliveryDetails = ({ next }) => {
         autoComplete="off"
         style={{ width: "100%" }}
       >
-        <Form.Item
-          label="Full Name"
-          name="fullname"
-          rules={[{ required: true, message: "Please input your full name!" }]}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexDirection: "row",
+          }}
         >
-          <Input placeholder="e.g  John Doe" />
-        </Form.Item>
+          <Form.Item
+            label="First Name"
+            name="firstname"
+            rules={[
+              { required: true, message: "Please input your first name!" },
+            ]}
+          >
+            <Input placeholder="e.g  John" />
+          </Form.Item>
+          <Form.Item
+            label="Last Name"
+            name="lastname"
+            rules={[
+              { required: true, message: "Please input your last name!" },
+            ]}
+          >
+            <Input placeholder="e.g Doe" />
+          </Form.Item>
+        </div>
 
         <Form.Item
           label="Email address"

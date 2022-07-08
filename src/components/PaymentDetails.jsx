@@ -12,7 +12,7 @@ import ReviewOrder from "./ReviewOrder";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-const PaymentDetails = ({ prev,next }) => {
+const PaymentDetails = ({ prev, next }) => {
   const { checkoutToken, shippingData, shippingOption, handleCaptureCheckout } =
     useContext(AppContext);
 
@@ -34,14 +34,17 @@ const PaymentDetails = ({ prev,next }) => {
       const orderData = {
         line_items: checkoutToken.live.line_items,
         customer: {
-          fullname: shippingData.fullname,
+          firstname: shippingData.firstname,
+          lastname: shippingData.lastname,
           email: shippingData.email,
         },
         shipping: {
           name: "Primary",
-          street: shippingData.address,
-          country: "Ghana",
-          country_state: "Ashanti",
+          street: shippingData.delivery_address,
+          town_city: shippingData.delivery_address,
+          county_state: "AH",
+          postal_zip_code: "AK-039-5028",
+          country: "GH",
         },
         fulfillment: {
           shipping_method: shippingOption,
@@ -53,6 +56,7 @@ const PaymentDetails = ({ prev,next }) => {
           },
         },
       };
+      console.log(orderData);
       handleCaptureCheckout(checkoutToken.id, orderData);
       next();
     }

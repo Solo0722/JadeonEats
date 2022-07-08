@@ -8,6 +8,7 @@ import { AppContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 import { HiLocationMarker } from "react-icons/hi";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const Home = () => {
   const { deliveryAddress } = useContext(AppContext);
@@ -45,19 +46,19 @@ const Home = () => {
 
   const reviews = [
     {
-      name: "Easy to order",
+      name: "Solomon O. Ansah",
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/easyorder.png",
+      img: "/myImage.jpg",
     },
     {
-      name: "Fatest delivery",
+      name: "Solomon O. Ansah",
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/bike2.png",
+      img: "/myImage.jpg",
     },
     {
-      name: "Best quality",
+      name: "Solomon O. Ansah",
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/food-delivery.png",
+      img: "/myImage.jpg",
     },
   ];
 
@@ -81,7 +82,7 @@ const Home = () => {
           </ImgContainer>
         </LandingContainer>
         <AdvertContainer>
-          <h2>Why choose us</h2>
+          <h1>Why choose us</h1>
           <AdWrapper>
             {reasons.map((reason, i) => (
               <ReasonCard key={i}>
@@ -93,13 +94,15 @@ const Home = () => {
           </AdWrapper>
         </AdvertContainer>
         <ReviewsSection>
-          <h2>What others say about us</h2>
+          <h1>What others say about us</h1>
           <AdWrapper2>
             {reviews.map((review, i) => (
               <ReviewCard key={i}>
                 <img src={review.img} alt="reason-image" />
                 <h2>{review.name}</h2>
-                <h2>"</h2>
+                <Quote>
+                  <FaQuoteLeft />
+                </Quote>
                 <p>{review.body}</p>
               </ReviewCard>
             ))}
@@ -217,6 +220,10 @@ const ImgContainer = styled.div`
 const AdvertContainer = styled.div`
   min-height: 70vh;
   padding: 10px 0;
+
+  h1 {
+    font-weight: bolder;
+  }
 `;
 
 const AdWrapper = styled.div`
@@ -236,7 +243,7 @@ const AdWrapper = styled.div`
 const ReasonCard = styled.div`
   width: 270px;
   min-height: 270px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,6 +270,10 @@ const ReasonCard = styled.div`
 const ReviewsSection = styled.div`
   min-height: 70vh;
   padding: 10px 0;
+
+  h1 {
+    font-weight: bolder;
+  }
 `;
 
 const AdWrapper2 = styled.div`
@@ -292,10 +303,15 @@ const ReviewCard = styled.div`
   margin: 10px 0;
 
   img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  p {
+    font-style: italic;
+    opacity: 0.7;
   }
 
   @media screen and (max-width: 768px) {
@@ -303,6 +319,11 @@ const ReviewCard = styled.div`
       width: 100%;
     }
   }
+`;
+
+const Quote = styled.div`
+  color: orangered;
+  margin: 10px 0;
 `;
 
 const MapContainer = styled.div`
