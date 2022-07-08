@@ -1,12 +1,12 @@
 {
-  "theme_color": "gold",
+  "theme_color": "orangered",
   "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "name": "JadeonEats",
-  "short_name": "JadEats",
-  "description": "Order your food online and get it delivered to you in seconds",
+  "short_name": "JadeonEats",
+  "description": "Order your food online and get it delivered to you in seconds. We are located in the University of Winneba, Kumasi Campus",
   "icons": [
     {
       "src": "/icon-192x192.png",
