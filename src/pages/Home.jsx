@@ -78,7 +78,7 @@ const Home = () => {
             </Button>
           </DeliveryAddressContainer>
           <ImgContainer>
-            <img src="pic1.png" />
+            <img src="pic2.png" />
           </ImgContainer>
         </LandingContainer>
         <AdvertContainer>
@@ -188,10 +188,12 @@ const ImgContainer = styled.div`
 
   img {
     width: 700px;
-    height: 610px;
+    height: 700px;
     position: absolute;
-    top: -10px;
-    right: 0;
+    right: 0px;
+    top: -50px;
+    z-index: -50;
+    filter: brightness(80%);
   }
 
   @media screen and (max-width: 768px) and (min-width: 486px) {
@@ -202,6 +204,7 @@ const ImgContainer = styled.div`
       right: 0;
       transform: translateX(20%);
       z-index: -100;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     }
   }
 
