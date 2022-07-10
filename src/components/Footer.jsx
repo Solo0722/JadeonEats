@@ -1,5 +1,6 @@
 import {
-  FacebookOutlined,
+  FacebookFilled,
+  GlobalOutlined,
   InstagramOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
@@ -11,8 +12,13 @@ const links = ["FAQ", "Help Center", "Account", "Terms of Use", "Contact Us"];
 
 const socialLinks = [
   {
+    name: "website",
+    icon: <GlobalOutlined />,
+    url: "https://www.oasolomon.vercel.app",
+  },
+  {
     name: "facebook",
-    icon: <FacebookOutlined />,
+    icon: <FacebookFilled />,
     url: "https://www.facebook.com",
   },
   {
@@ -39,7 +45,7 @@ const Footer = () => {
         {socialLinks.map((socialLink) => (
           <Button
             icon={socialLink.icon}
-            type="link"
+            type="text"
             size="large"
             href={socialLink.url}
             target="_blank"
@@ -78,6 +84,10 @@ const SocialLinksContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 20px 0;
+
+  a {
+    margin:0 10px;
+  }
 `;
 
 export default Footer;

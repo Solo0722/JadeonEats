@@ -32,17 +32,18 @@ const Login = () => {
             style={{ width: "100%" }}
           >
             <Form.Item
-              name="username"
+              name="email"
               rules={[
                 {
                   required: true,
-                  message: "Please input your username!",
+                  type: "email",
+                  message: "Please input your email!",
                 },
               ]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
+                placeholder="Email"
               />
             </Form.Item>
 

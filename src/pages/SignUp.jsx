@@ -7,8 +7,9 @@ import {
   MobileOutlined,
   LeftOutlined,
 } from "@ant-design/icons";
+import { HiLocationMarker } from "react-icons/hi";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -42,26 +43,44 @@ const SignUp = () => {
             autoComplete="off"
             style={{ width: "100%" }}
           >
-            <Form.Item
-              name="username"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your username!",
-                },
-              ]}
-            >
-              <Input
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
-              />
-            </Form.Item>
+            <div>
+              <Form.Item
+                name="firstName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your first name!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="First Name"
+                />
+              </Form.Item>
+              <Form.Item
+                name="lastName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your last name!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Last Name"
+                />
+              </Form.Item>
+            </div>
 
             <Form.Item
               name="phone"
               rules={[
                 {
                   required: true,
+                  min: 10,
+                  max: 13,
                   message: "Please input your mobile number!",
                 },
               ]}
@@ -69,6 +88,21 @@ const SignUp = () => {
               <Input
                 prefix={<MobileOutlined className="site-form-item-icon" />}
                 placeholder="Mobile number"
+                type={"tel"}
+              />
+            </Form.Item>
+            <Form.Item
+              name="address"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your address!",
+                },
+              ]}
+            >
+              <Input
+                prefix={<HiLocationMarker className="site-form-item-icon" />}
+                placeholder="Location"
               />
             </Form.Item>
 
@@ -86,9 +120,19 @@ const SignUp = () => {
                 placeholder="Password"
               />
             </Form.Item>
-
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Remember me</Checkbox>
+            <Form.Item
+              name="confirmPassword"
+              rules={[
+                {
+                  required: true,
+                  message: "Please confirm your password!",
+                },
+              ]}
+            >
+              <Input.Password
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                placeholder="Confirm Password"
+              />
             </Form.Item>
 
             <Form.Item>
@@ -102,6 +146,9 @@ const SignUp = () => {
               </Button>
             </Form.Item>
           </Form>
+          <LinksContainer>
+            <Link to="/login">Already registered? Sign in</Link>
+          </LinksContainer>
         </LoginForm>
       </SignUpContainer>
     </>
@@ -129,6 +176,20 @@ const LoginForm = styled.div`
   width: 60%;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 90%;
+    }
+  }
+`;
+
+const LinksContainer = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   @media screen and (max-width: 768px) {
     & {

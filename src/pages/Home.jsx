@@ -161,6 +161,7 @@ const DeliveryAddressContainer = styled.div`
 
   h1 {
     font-size: 3.5rem;
+    font-weight: bolder;
   }
 
   form button {
@@ -193,7 +194,6 @@ const ImgContainer = styled.div`
     right: 0px;
     top: -50px;
     z-index: -50;
-    filter: brightness(80%);
   }
 
   @media screen and (max-width: 768px) and (min-width: 486px) {

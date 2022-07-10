@@ -30,7 +30,7 @@ const Menu = () => {
         <Wrapper>
           <DeliverTo />
           <MealsContainer>
-            {!products ? (
+            {!products || products.length === 0 ? (
               <Spin />
             ) : (
               products.map((product) => (

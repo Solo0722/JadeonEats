@@ -1,6 +1,6 @@
 import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, Badge } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import Drawerbar from "./Drawerbar";
@@ -11,8 +11,31 @@ const Navbar = () => {
   const { cart } = useContext(AppContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 66) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    changeBackground();
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground);
+  });
+
   return (
-    <NavContainer className="navbar">
+    <NavContainer
+      className="navbar"
+      style={{
+        background: `${location.pathname == "/" ? "transparent" : ""}`,
+        backdropFilter: `${navbar ? "blur(10px)" : "blur(0px)"}`,
+      }}
+    >
       <LogoContainer>
         <Drawerbar />
         <h3 onClick={() => navigate("/menu")}>
@@ -22,6 +45,15 @@ const Navbar = () => {
       </LogoContainer>
 
       <ToolsContainer>
+        <Button
+          type="link"
+          href="/login"
+          style={{
+            display: `${location.pathname == "/" ? "block" : "none"}`,
+          }}
+        >
+          Sign in
+        </Button>
         <SwitchTheme />
         <Button
           icon={<SearchOutlined />}
