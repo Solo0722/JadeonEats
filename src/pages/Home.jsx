@@ -93,7 +93,6 @@ const Home = () => {
               Get served with the best quality local and continental delicacies.
             </p>
             <DeliveryAddressForm />
-        
           </div>
         </LandingContainer>
         {/* <AdvertContainer>
@@ -149,7 +148,8 @@ const LandingContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: url("/bak.jpg");
+  background-image: url("/bak.jpg"),
+    linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -165,7 +165,7 @@ const LandingContainer = styled.div`
 
   p {
     text-align: center;
-    color:#ddd;
+    color: #ddd;
   }
 
   input::placeholder {
