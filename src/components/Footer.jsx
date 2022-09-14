@@ -47,8 +47,9 @@ const Footer = () => {
             icon={socialLink.icon}
             type="text"
             size="large"
-            href={socialLink.url}
-            target="_blank"
+            // href={socialLink.url}
+            href=""
+            // target="_blank"
           />
         ))}
       </SocialLinksContainer>
@@ -65,9 +66,15 @@ const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background: #000;
+  color: #fff;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
   p {
     text-align: center;
+  }
+
+  button {
+    color: #fff;
   }
 `;
 
@@ -86,7 +93,8 @@ const SocialLinksContainer = styled.div`
   margin: 20px 0;
 
   a {
-    margin:0 10px;
+    margin: 0 10px;
+    color: #fff;
   }
 `;
 

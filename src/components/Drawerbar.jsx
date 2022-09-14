@@ -37,7 +37,7 @@ const Drawerbar = () => {
         onClose={onClose}
         visible={visible}
         width={"70%"}
-        bodyStyle={{ width: "100%" }}
+        bodyStyle={{ width: "100%", paddingLeft: "0px", paddingRight: "0px" }}
         closeIcon={<CloseCircleOutlined />}
       >
         <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>

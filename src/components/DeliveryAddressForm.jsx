@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Affix, Button, Checkbox, Form, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { HiLocationMarker } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,8 @@ const DeliveryAddressForm = () => {
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"
+      autoComplete="on"
+      style={{ zIndex: "50" }}
     >
       <Form.Item
         name="deliveryAddress"
@@ -47,7 +48,7 @@ const DeliveryAddressForm = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" size="large">
+        <Button block type="primary" htmlType="submit" size="large">
           Find food
         </Button>
       </Form.Item>

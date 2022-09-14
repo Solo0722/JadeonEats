@@ -1,8 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 import Commerce from "@chec/commerce.js";
-import { Button, List } from "antd";
+import { Avatar, Button, List } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthenticationContext } from "./AuthContext";
 
 export const AppContext = createContext();
 
@@ -74,6 +76,8 @@ const Context = ({ children }) => {
     JSON.parse(localStorage.getItem("deliveryAddress"))
   );
   const [shippingData, setShippingData] = useState(null);
+
+  const { currentUser } = useContext(AuthenticationContext);
 
   const location = useLocation();
 
@@ -234,14 +238,22 @@ const Context = ({ children }) => {
             </List.Item>
           ))}
         </List>
-        <Button
-          href="/login"
-          type="primary"
-          block
-          style={{ marginTop: "30px" }}
-        >
-          Login/Sign up
-        </Button>
+        {/* {currentUser ? (
+          <Button
+            icon={<Avatar children={currentUser.firstName.slice(0, 1)} />}
+          >
+            {currentUser.email}
+          </Button>
+        ) : (
+          <Button
+            href="/login"
+            type="primary"
+            block
+            style={{ marginTop: "30px" }}
+          >
+            Login/Sign up
+          </Button>
+        )} */}
       </>
     );
   };
@@ -276,7 +288,7 @@ const Context = ({ children }) => {
         fetchSpecificCategory,
         fetchProductsBySearch,
         fetchSingleProduct,
-        
+
         renderCategoryList,
         generateCheckoutToken,
         setDeliveryAddress,

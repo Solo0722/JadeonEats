@@ -1,4 +1,8 @@
-import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Button, Badge } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -14,7 +18,6 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
 
   const changeBackground = () => {
-    console.log(window.scrollY);
     if (window.scrollY >= 66) {
       setNavbar(true);
     } else {
@@ -38,23 +41,17 @@ const Navbar = () => {
     >
       <LogoContainer>
         <Drawerbar />
-        <h3 onClick={() => navigate("/menu")}>
+        <h3
+          onClick={() =>
+            navigate(`${location.pathname == "/" ? "/" : "/menu"}`)
+          }
+        >
           Jadeon
           <span style={{ fontWeight: "bolder", color: "orangered" }}>Eats</span>
         </h3>
       </LogoContainer>
 
       <ToolsContainer>
-        <Button
-          type="link"
-          href="/login"
-          style={{
-            display: `${location.pathname == "/" ? "block" : "none"}`,
-          }}
-        >
-          Sign in
-        </Button>
-        <SwitchTheme />
         <Button
           icon={<SearchOutlined />}
           type="ghost"
@@ -66,6 +63,12 @@ const Navbar = () => {
                 : "block"
             }`,
           }}
+        />
+        <SwitchTheme />
+        <Button
+          icon={<UserOutlined />}
+          type="ghost"
+          onClick={() => navigate("/auth")}
         />
         <CartContainer
           style={{
@@ -121,8 +124,8 @@ const LogoContainer = styled.div`
     cursor: pointer;
   }
 `;
-const SearchContainer = styled.div``;
-const ToolsContainer = styled.div`
+// const SearchContainer = styled.div``;
+export const ToolsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

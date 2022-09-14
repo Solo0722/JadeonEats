@@ -46,6 +46,7 @@ const TitleContainer = styled.div`
 
 export const MealLinksContainer = styled.div`
   margin-top: 20px;
+  width: 100%;
 `;
 
 export default SideBar;

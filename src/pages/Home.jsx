@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import DeliveryAddressForm from "../components/DeliveryAddressForm";
-import Navbar from "../components/Navbar";
-import { Button } from "antd";
+import { ToolsContainer } from "../components/Navbar";
+import { Button, Carousel } from "antd";
 import Footer from "../components/Footer";
 import { AppContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-import GoogleMapReact from "google-map-react";
-import { HiLocationMarker } from "react-icons/hi";
 import { FaQuoteLeft } from "react-icons/fa";
+import SwitchTheme from "../components/SwitchTheme";
+import { UserOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const { deliveryAddress } = useContext(AppContext);
@@ -64,37 +64,50 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <HomeContainer>
         <LandingContainer>
-          <DeliveryAddressContainer>
+          <Nav>
+            <h3>
+              Jadeon
+              <span style={{ fontWeight: "bolder", color: "orangered" }}>
+                Eats
+              </span>
+            </h3>
+
+            <ToolsContainer>
+              <Button
+                type="primary"
+                shape="round"
+                onClick={() => navigate("/auth")}
+              >
+                Sign in
+              </Button>
+            </ToolsContainer>
+          </Nav>
+          <div style={{ width: "60%", margin: "auto" }}>
             <h1>
               Order <span style={{ color: "orangered" }}>food</span> to your
               door.
             </h1>
+            <p>
+              Get served with the best quality local and continental delicacies.
+            </p>
             <DeliveryAddressForm />
-            <Button type="text" href="/login" style={{ marginLeft: "-10px" }}>
-              Sign in to save your address
-            </Button>
-          </DeliveryAddressContainer>
-          <ImgContainer>
-            <img src="pic2.png" />
-          </ImgContainer>
+        
+          </div>
         </LandingContainer>
-        <AdvertContainer>
-          <h1>Why choose us</h1>
+        {/* <AdvertContainer>
           <AdWrapper>
             {reasons.map((reason, i) => (
               <ReasonCard key={i}>
                 <img src={reason.img} alt="reason-image" />
                 <h2>{reason.title}</h2>
-                <p>{reason.body}</p>
               </ReasonCard>
             ))}
           </AdWrapper>
-        </AdvertContainer>
-        <ReviewsSection>
-          <h1>What others say about us</h1>
+        </AdvertContainer> */}
+        {/* <ReviewsSection>
+          <h1>Our Customers say</h1>
           <AdWrapper2>
             {reviews.map((review, i) => (
               <ReviewCard key={i}>
@@ -107,20 +120,7 @@ const Home = () => {
               </ReviewCard>
             ))}
           </AdWrapper2>
-        </ReviewsSection>
-        {/* <MapContainer>
-          <h2>Where we are located</h2>
-          <MapWrapper>
-            <GoogleMapReact
-              bootstrapURLKeys={{key:''}}
-              defaultCenter={location}
-              defaultZoom={17}
-            >
-              <HiLocationMarker />
-              <p>{location.address}</p>
-            </GoogleMapReact>
-          </MapWrapper>
-        </MapContainer> */}
+        </ReviewsSection> */}
       </HomeContainer>
       <Footer />
     </>
@@ -129,10 +129,17 @@ const Home = () => {
 
 const HomeContainer = styled.div`
   width: 100%;
-  min-height: calc(100vh - 65px);
-  padding: 2rem 1rem;
   position: relative;
   overflow-x: hidden;
+`;
+
+const Nav = styled.div`
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 `;
 
 const LandingContainer = styled.div`
@@ -140,33 +147,25 @@ const LandingContainer = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  flex-direction: row;
-`;
-
-const DeliveryAddressContainer = styled.div`
-  width: 60%;
-  /* transform: translateY(-30%) !important; */
-  animation: myAnim 2s ease 0s 1 normal forwards;
-  @keyframes myAnim {
-    0% {
-      opacity: 0;
-      transform: translateX(-250px) translateY(-30%);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0) translateY(-30%);
-    }
-  }
+  justify-content: center;
+  flex-direction: column;
+  background: url("/bak.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   h1 {
     font-size: 3.5rem;
     font-weight: bolder;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    color: #fff;
   }
 
-  form button {
-    width: 40%;
-    margin-top: 10px;
+  p {
+    text-align: center;
+    color:#ddd;
   }
 
   input::placeholder {
@@ -180,42 +179,6 @@ const DeliveryAddressContainer = styled.div`
 
     h1 {
       font-size: 2.5rem;
-    }
-  }
-`;
-
-const ImgContainer = styled.div`
-  width: 35%;
-
-  img {
-    width: 700px;
-    height: 700px;
-    position: absolute;
-    right: 0px;
-    top: -50px;
-    z-index: -50;
-  }
-
-  @media screen and (max-width: 768px) and (min-width: 486px) {
-    & {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      right: 0;
-      transform: translateX(20%);
-      z-index: -100;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    }
-  }
-
-  @media screen and (max-width: 486px) {
-    & {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      right: 0;
-      transform: translateX(70%);
-      z-index: -100;
     }
   }
 `;
@@ -246,17 +209,18 @@ const AdWrapper = styled.div`
 const ReasonCard = styled.div`
   width: 270px;
   min-height: 270px;
-  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 5px;
   border-radius: 7px;
   margin: 10px 0;
 
   img {
-    width: 70px;
-    height: 70px;
+    width: 170px;
+    height: 170px;
   }
 
   h2 {
