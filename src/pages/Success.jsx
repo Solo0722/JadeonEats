@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { BsBagCheckFill } from "react-icons/bs";
 import { Button } from "antd";
 import styled from "styled-components";
-// import { runFireworks } from "../utils/confetti";
+import { runFireworks } from "../utils/confetti";
 
 const Success = () => {
   const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     runFireworks();
-  //   }, []);
+  useEffect(() => {
+    runFireworks();
+  }, []);
 
   return (
     <SuccessContainer>
@@ -50,6 +50,12 @@ const BodyWrapper = styled.div`
   justify-content: center;
   border-radius: 10px;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 90%;
+    }
+  }
 `;
 
 export default Success;

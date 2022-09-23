@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.21.0",
     "axios": "^0.27.2",
+    "canvas-confetti": "^1.5.1",
     "craco-less": "^2.0.0",
     "google-map-react": "^2.1.10",
     "react": "^18.1.0",
