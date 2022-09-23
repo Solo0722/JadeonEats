@@ -79,7 +79,7 @@ const Home = () => {
               </Button>
             </ToolsContainer>
           </Nav>
-          <div style={{ width: "60%", margin: "auto" }}>
+          <BodyWrapper>
             <h1>
               Order <span style={{ color: "orangered" }}>food</span> to your
               door.
@@ -88,7 +88,7 @@ const Home = () => {
               Get served with the best quality local and continental delicacies.
             </p>
             <DeliveryAddressForm />
-          </div>
+          </BodyWrapper>
         </LandingContainer>
         {/* <AdvertContainer>
           <AdWrapper>
@@ -189,6 +189,17 @@ const LandingContainer = styled.div`
 
     h1 {
       font-size: 2.5rem;
+    }
+  }
+`;
+
+const BodyWrapper = styled.div`
+  width: 60%;
+  margin: auto;
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 90%;
     }
   }
 `;
