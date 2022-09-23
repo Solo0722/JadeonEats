@@ -9,12 +9,15 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import ReviewOrder from "./ReviewOrder";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const PaymentDetails = ({ prev, next }) => {
   const { checkoutToken, shippingData, shippingOption, handleCaptureCheckout } =
     useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const onFinish = async (values, elements, stripe) => {
     console.log("Success:", values);
@@ -59,6 +62,7 @@ const PaymentDetails = ({ prev, next }) => {
       console.log(orderData);
       handleCaptureCheckout(checkoutToken.id, orderData);
       next();
+      navigate("/success");
     }
   };
 

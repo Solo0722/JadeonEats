@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { Form, Input, Button } from "antd";
 import styled from "styled-components";
 import { AppContext } from "../context/Context";
+import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const DeliveryDetails = ({ next }) => {
   const { setShippingData } = useContext(AppContext);
@@ -16,6 +19,8 @@ const DeliveryDetails = ({ next }) => {
     console.log("Failed:", errorInfo);
   };
 
+  const navigate = useNavigate();
+
   return (
     <DeliveryDetailsContainer>
       <Form
@@ -27,36 +32,20 @@ const DeliveryDetails = ({ next }) => {
         autoComplete="off"
         style={{ width: "100%" }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexDirection: "row",
-          }}
+        <Form.Item
+          name="firstname"
+          rules={[{ required: true, message: "Please input your first name!" }]}
         >
-          <Form.Item
-            label="First Name"
-            name="firstname"
-            rules={[
-              { required: true, message: "Please input your first name!" },
-            ]}
-          >
-            <Input placeholder="e.g  John" />
-          </Form.Item>
-          <Form.Item
-            label="Last Name"
-            name="lastname"
-            rules={[
-              { required: true, message: "Please input your last name!" },
-            ]}
-          >
-            <Input placeholder="e.g Doe" />
-          </Form.Item>
-        </div>
+          <Input placeholder="First name" />
+        </Form.Item>
+        <Form.Item
+          name="lastname"
+          rules={[{ required: true, message: "Please input your last name!" }]}
+        >
+          <Input placeholder="Last name" />
+        </Form.Item>
 
         <Form.Item
-          label="Email address"
           name="email"
           rules={[
             {
@@ -66,27 +55,25 @@ const DeliveryDetails = ({ next }) => {
             },
           ]}
         >
-          <Input placeholder="e.g johndoe@gmail.com" />
+          <Input placeholder="Email" />
         </Form.Item>
 
         <Form.Item
-          label="Phone number"
           name="phone"
           rules={[
             { required: true, message: "Please input your phone number!" },
           ]}
         >
-          <Input type={"tel"} placeholder="e.g +233591172136" />
+          <Input type={"tel"} placeholder="Phone number" />
         </Form.Item>
         <Form.Item
-          label="Delivery Address"
           name="delivery_address"
           rules={[
             { required: true, message: "Please input your delivery address!" },
           ]}
         >
           <Input
-            placeholder="eg. Autonomy Hall room 25"
+            placeholder="Address"
             type={"text"}
             defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
           />
@@ -100,16 +87,19 @@ const DeliveryDetails = ({ next }) => {
               width: "100%",
             }}
           >
-            <Button href="/cart">Back to cart</Button>
+            <Button
+              onClick={() => navigate("/cart")}
+              type={"text"}
+              icon={<ArrowLeftOutlined />}
+            >
+              Back to cart
+            </Button>
             <Button type="primary" htmlType="submit">
               Next
             </Button>
           </div>
         </Form.Item>
       </Form>
-      <div>
-        <a href="/signup">Sign up to save your delivery address</a>
-      </div>
     </DeliveryDetailsContainer>
   );
 };
@@ -119,6 +109,11 @@ const DeliveryDetailsContainer = styled.div`
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 30px;
+
+  input {
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 1px;
+  }
 `;
 
 export default DeliveryDetails;

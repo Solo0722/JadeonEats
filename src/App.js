@@ -10,6 +10,7 @@ import MealDetail from "./pages/MealDetail";
 import Search from "./pages/Search";
 import AuthContext from "./context/AuthContext";
 import Auth from "./pages/Auth";
+import Success from "./pages/Success";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/success" element={<Success />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Context>

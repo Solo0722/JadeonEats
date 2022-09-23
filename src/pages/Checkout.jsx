@@ -26,16 +26,6 @@ const Checkout = () => {
     setCurrent(current - 1);
   };
 
-  const Confirmation = () => {
-    return (
-      <div>
-        <h2>Thank You for your purchase</h2>
-        <Button type="primary" href="/menu">
-          Back to home
-        </Button>
-      </div>
-    );
-  };
 
   const steps = [
     {
@@ -45,10 +35,6 @@ const Checkout = () => {
     {
       title: "Payment Details",
       content: <PaymentDetails prev={prev} next={next} />,
-    },
-    {
-      title: "Confirmation",
-      content: <Confirmation />,
     },
   ];
 
@@ -76,7 +62,7 @@ const CheckoutContainer = styled.div`
   width: 60%;
   margin: 0 auto;
   margin-top: 30px;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 55px);
 
   @media screen and (max-width: 768px) {
     & {

@@ -3,7 +3,8 @@ import {
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Badge } from "antd";
+import { Button, Badge, Avatar } from "antd";
+import { BiSearch, BiUser } from "react-icons/bi";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -41,33 +42,28 @@ const Navbar = () => {
     >
       <LogoContainer>
         <Drawerbar />
-        <h3
-          onClick={() =>
-            navigate(`${location.pathname == "/" ? "/" : "/menu"}`)
-          }
-        >
-          Jadeon
-          <span style={{ fontWeight: "bolder", color: "orangered" }}>Eats</span>
-        </h3>
+        <img src="/salad.png" alt="logo" width={25} height={25} />
       </LogoContainer>
 
       <ToolsContainer>
-        <Button
-          icon={<SearchOutlined />}
-          type="ghost"
+        <Avatar
+          icon={<BiSearch style={{ marginTop: "5px" }} />}
+          size="small"
+          shape="square"
           onClick={() => navigate("/search")}
           style={{
-            display: `${
-              location.pathname == "/" || location.pathname == "/checkout"
-                ? "none"
-                : "block"
-            }`,
+            background: "#fff",
+            color: "#000",
+            marginRight: "10px",
+            cursor: "pointer",
           }}
         />
         <SwitchTheme />
-        <Button
-          icon={<UserOutlined />}
-          type="ghost"
+        <Avatar
+          icon={<BiUser style={{ marginTop: "5px" }} />}
+          size="small"
+          shape="square"
+          style={{ background: "#fff", color: "#000", cursor: "pointer" }}
           onClick={() => navigate("/auth")}
         />
         <CartContainer
@@ -77,7 +73,7 @@ const Navbar = () => {
                 ? "none"
                 : "block"
             }`,
-            marginLeft: "5px",
+            marginLeft: "10px",
           }}
         >
           <Badge
@@ -85,10 +81,16 @@ const Navbar = () => {
             overflowCount={"9"}
             color={"orangered"}
             children={
-              <Button
-                type="ghost"
-                icon={<ShoppingCartOutlined />}
-                href="/cart"
+              <Avatar
+                icon={<ShoppingCartOutlined style={{ marginTop: "5px" }} />}
+                size="small"
+                shape="square"
+                style={{
+                  background: "#fff",
+                  color: "#000",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/cart")}
               />
             }
           />
@@ -100,12 +102,12 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
   width: 100%;
-  height: 60px;
+  height: 55px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
   top: 0%;
   z-index: 100;

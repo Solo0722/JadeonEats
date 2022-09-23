@@ -1,5 +1,5 @@
-import { Button, Drawer, List } from "antd";
-import { CloseCircleOutlined, MenuOutlined } from "@ant-design/icons";
+import { Avatar, Button, Drawer } from "antd";
+import { BiMenu } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { MealLinksContainer } from "./SideBar";
 import styled from "styled-components";
@@ -21,14 +21,18 @@ const Drawerbar = () => {
 
   return (
     <DrawerContainer>
-      <Button
-        type="text"
+      <Avatar
+        icon={<BiMenu style={{ marginTop: "5px" }} />}
+        size="small"
+        shape="square"
         onClick={showDrawer}
         style={{
-          marginRight: 0,
+          background: "#fff",
+          color: "#000",
+          cursor: "pointer",
+          marginRight: "10px",
           display: `${location.pathname == "/" ? "none" : "block"}`,
         }}
-        icon={<MenuOutlined />}
       />
 
       <Drawer
@@ -37,8 +41,12 @@ const Drawerbar = () => {
         onClose={onClose}
         visible={visible}
         width={"70%"}
-        bodyStyle={{ width: "100%", paddingLeft: "0px", paddingRight: "0px" }}
-        closeIcon={<CloseCircleOutlined />}
+        bodyStyle={{
+          width: "100%",
+          paddingLeft: "0px",
+          paddingRight: "0px",
+          paddingTop: "0px",
+        }}
       >
         <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
       </Drawer>

@@ -20,7 +20,7 @@ const SidebarContainer = styled.div`
   width: 20%;
   padding: 5px 0;
   position: fixed;
-  top: 50px;
+  top: 40px;
   bottom: 0;
   overflow-y: scroll;
 

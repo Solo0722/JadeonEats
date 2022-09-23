@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useThemeSwitcher } from "react-css-theme-switcher";
-import { Switch, Button } from "antd";
+import { Switch, Button, Avatar } from "antd";
 
 export default function SwitchTheme() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -26,8 +26,7 @@ export default function SwitchTheme() {
 
   return (
     <div className="App">
-      <Button
-        type="ghost"
+      <Avatar
         icon={
           isDarkMode ? (
             <FiMoon style={{ marginTop: "5px" }} />
@@ -36,6 +35,14 @@ export default function SwitchTheme() {
           )
         }
         onClick={switchTheme}
+        size="small"
+        shape="square"
+        style={{
+          background: "#fff",
+          color: "#000",
+          cursor: "pointer",
+          marginRight: "10px",
+        }}
       />
     </div>
   );

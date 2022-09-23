@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
 
-
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [form] = Form.useForm();
@@ -21,7 +20,7 @@ const Auth = () => {
 
   return (
     <Wrapper>
-      <AuthContainer>
+      <AuthContainer className="auth">
         <h2>{isSignUp ? "Create a new account" : "Sign in to your account"}</h2>
         <Form
           form={form}

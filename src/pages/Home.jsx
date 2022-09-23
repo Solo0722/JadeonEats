@@ -67,12 +67,7 @@ const Home = () => {
       <HomeContainer>
         <LandingContainer>
           <Nav>
-            <h3>
-              Jadeon
-              <span style={{ fontWeight: "bolder", color: "orangered" }}>
-                Eats
-              </span>
-            </h3>
+            <img src="/salad.png" alt="logo" width={25} height={25} />
 
             <ToolsContainer>
               <Button
@@ -149,10 +144,11 @@ const LandingContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   background-image: url("/bak.jpg"),
-    linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    linear-gradient(to left, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-blend-mode: darken;
 
   h1 {
     font-size: 3.5rem;
@@ -161,15 +157,29 @@ const LandingContainer = styled.div`
     padding: 0.5rem;
     margin: 0.5rem;
     color: #fff;
+    animation: fadeIn 1s ease-in both;
   }
 
   p {
     text-align: center;
     color: #ddd;
+    animation: fadeIn 1s ease-in both;
+    animation-delay: 1s;
   }
 
   input::placeholder {
     font-size: 0.8rem;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -20%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   @media screen and (max-width: 768px) {
