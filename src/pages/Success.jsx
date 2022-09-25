@@ -43,7 +43,7 @@ const SuccessContainer = styled.div`
 
 const BodyWrapper = styled.div`
   width: 50%;
-  height: 350px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;

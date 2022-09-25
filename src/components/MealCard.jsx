@@ -1,7 +1,5 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Button } from "antd";
-import { useEffect } from "react";
-import { useState } from "react";
 import { ShoppingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";

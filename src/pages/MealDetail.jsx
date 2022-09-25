@@ -1,8 +1,5 @@
 import {
-  ClockCircleOutlined,
   ShoppingOutlined,
-  StarFilled,
-  StarTwoTone,
 } from "@ant-design/icons";
 import { Button, Divider, Spin } from "antd";
 import React, { useContext, useEffect, useState } from "react";
@@ -12,6 +9,7 @@ import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
+import SkeletonAnimation from "../utils/skeleton";
 
 const MealDetail = () => {
   const { products, handleAddToCart, fetchSpecificCategory } =
@@ -79,7 +77,7 @@ const MealDetail = () => {
             <h2>More for you</h2>
             <MealsContainer>
               {!products ? (
-                <Spin />
+                <SkeletonAnimation />
               ) : (
                 products.map((product) => (
                   <MealCard

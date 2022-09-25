@@ -1,12 +1,6 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { AppContext } from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const Home = () => {
-  const { deliveryAddress } = useContext(AppContext);
-  const navigate = useNavigate();
-
   return (
     <>
       <div class="preloader">
@@ -33,7 +27,7 @@ const Home = () => {
               <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg">
                   <a class="navbar-brand" href="index.html">
-                    <img src="/salad.png" alt="Logo" width={30} height={30} />
+                    <img src="/assets/img/logo/logo-2.svg" alt="Logo" />
                   </a>
                   <button
                     class="navbar-toggler"
@@ -105,7 +99,7 @@ const Home = () => {
                 </h1>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
                   Enjoy the taste of food made by the best chefs in the world at
-                  home!We cook with love and deliver while it’s still piping
+                  home! We cook with love and deliver while it’s still piping
                   hot.
                 </p>
                 <a
@@ -119,7 +113,7 @@ const Home = () => {
             </div>
             <div class="col-lg-6">
               <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-                <img src="assets/img/hero/hero-img.jpg" alt="" />
+                <img src="/assets/img/landingpage/delivery.jpg" alt="" />
               </div>
             </div>
           </div>
@@ -146,7 +140,7 @@ const Home = () => {
                   <img src="assets/img/service/service-icon-1.svg" alt="" />
                 </div>
                 <div class="content">
-                  <h3>Food</h3>
+                  <h3>Local</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     diam nonumy eirmod tempor invidunt.
@@ -160,7 +154,7 @@ const Home = () => {
                   <img src="assets/img/service/service-icon-2.svg" alt="" />
                 </div>
                 <div class="content">
-                  <h3>Grocery</h3>
+                  <h3>Continental</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     diam nonumy eirmod tempor invidunt.
@@ -174,49 +168,7 @@ const Home = () => {
                   <img src="assets/img/service/service-icon-3.svg" alt="" />
                 </div>
                 <div class="content">
-                  <h3>Furniture</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                <div class="icon">
-                  <img src="assets/img/service/service-icon-4.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h3>Medicine</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                <div class="icon">
-                  <img src="assets/img/service/service-icon-5.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h3>Electronics</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                <div class="icon">
-                  <img src="assets/img/service/service-icon-6.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h3>Clothes</h3>
+                  <h3>Desserts</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     diam nonumy eirmod tempor invidunt.
@@ -233,7 +185,7 @@ const Home = () => {
           <div class="row">
             <div class="col-lg-6">
               <div class="about-img wow fadeInUp" data-wow-delay=".5s">
-                <img src="assets/img/about/about-img.jpg" alt="" />
+                <img src="/assets/img/landingpage/ontime.jpg" alt="" />
               </div>
             </div>
             <div class="col-lg-6">
@@ -334,7 +286,7 @@ const Home = () => {
             </div>
             <div class="col-lg-7 order-first order-lg-last">
               <div class="delivery-img wow fadeInUp" data-wow-delay=".5s">
-                <img src="assets/img/delivery/delivery-img.jpg" alt="" />
+                <img src="/assets/img/landingpage/fastdelivery.jpg" alt="" />
               </div>
             </div>
           </div>
@@ -348,7 +300,7 @@ const Home = () => {
                 class="about-img received-img wow fadeInUp"
                 data-wow-delay=".5s"
               >
-                <img src="assets/img/received/received-img.jpg" alt="" />
+                <img src="/assets/img/landingpage/contactless.jpg" alt="" />
               </div>
             </div>
             <div class="col-lg-6">
@@ -578,7 +530,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="partner" class="partner-section pt-60 pb-60">
+      {/* <section id="partner" class="partner-section pt-60 pb-60">
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-sm-6">
@@ -603,7 +555,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <footer id="footer" class="footer pt-100 pb-70">
         <div class="footer-shape">
           <img
@@ -623,7 +575,7 @@ const Home = () => {
               <div class="footer-widget wow fadeInUp" data-wow-delay=".2s">
                 <div class="logo">
                   <a href="index.html">
-                    <img src="/salad.png" alt="Logo" width={50} height={50} />
+                    <img src="/assets/img/logo/logo-2.svg" alt="Logo" />
                   </a>
                 </div>
                 <div class="download-btns">

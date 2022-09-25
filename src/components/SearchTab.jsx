@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Input, Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 import { AppContext } from "../context/Context";
+import { BiSearch } from "react-icons/bi";
 
 const SearchTab = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,13 +17,18 @@ const SearchTab = () => {
   return (
     <Input
       placeholder="Search..."
-      style={{ borderRadius: "20px", marginBottom: "10px" }}
+      style={{
+        borderRadius: "20px",
+        marginBottom: "10px",
+        boxShadow: "rgba(0,0,0,0.24) 0px 2px 1px",
+        paddingLeft: "15px",
+        paddingRight: "15px",
+      }}
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
-
       suffix={
-        <Button type="link" size="small" onClick={search}>
-          <SearchOutlined />
+        <Button type="text" size="small" onClick={search}>
+          <BiSearch />
         </Button>
       }
     />

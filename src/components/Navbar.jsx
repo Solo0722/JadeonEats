@@ -1,16 +1,10 @@
-import {
-  SearchOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Button, Badge, Avatar } from "antd";
-import { BiSearch, BiUser } from "react-icons/bi";
+import { Button, Badge } from "antd";
+import { BiSearch, BiUser, BiCartAlt } from "react-icons/bi";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import Drawerbar from "./Drawerbar";
 import { AppContext } from "../context/Context";
-import SwitchTheme from "./SwitchTheme";
 import DeliverTo from "./DeliverTo";
 
 const Navbar = () => {
@@ -43,20 +37,26 @@ const Navbar = () => {
     >
       <LogoContainer>
         <Drawerbar />
-        <img src="/salad.png" alt="logo" width={25} height={25} />
+        {/* <img src="/salad.png" alt="logo" width={25} height={25} /> */}
+        <img
+          src="/assets/img/logo/logo-2.svg"
+          alt="Logo"
+          // width={30}
+          // height={30}
+        />
       </LogoContainer>
       <DeliverTo />
 
       <ToolsContainer>
         <Button
           className="tools-item"
-          icon={<BiSearch />}
+          icon={<BiSearch size={20} />}
           type="text"
           onClick={() => navigate("/search")}
         />
         <Button
           className="tools-item"
-          icon={<BiUser />}
+          icon={<BiUser size={20} />}
           type="text"
           onClick={() => navigate("/auth")}
         />
@@ -77,7 +77,7 @@ const Navbar = () => {
               <Button
                 className="tools-item"
                 type="text"
-                icon={<ShoppingCartOutlined />}
+                icon={<BiCartAlt size={20} />}
                 onClick={() => navigate("/cart")}
               />
             }

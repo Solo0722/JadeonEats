@@ -1,4 +1,3 @@
-import { Spin } from "antd";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import MealCard from "../components/MealCard";
@@ -6,6 +5,7 @@ import Navbar from "../components/Navbar";
 import SearchTab from "../components/SearchTab";
 import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
+import SkeletonAnimation from "../utils/skeleton";
 
 const Search = () => {
 
@@ -20,7 +20,7 @@ const Search = () => {
           <SearchTab />
           <MealsContainer>
             {!products ? (
-              <Spin />
+              <SkeletonAnimation />
             ) : (
               products.map((product) => (
                 <MealCard product={product} handleAddToCart={handleAddToCart} />

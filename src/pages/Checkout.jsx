@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, Steps } from "antd";
+import {  Steps } from "antd";
 import DeliveryDetails from "../components/DeliveryDetails";
-import { ShopFilled } from "@ant-design/icons";
 import PaymentDetails from "../components/PaymentDetails";
 import { AppContext } from "../context/Context";
 import Navbar from "../components/Navbar";
@@ -26,7 +25,6 @@ const Checkout = () => {
     setCurrent(current - 1);
   };
 
-
   const steps = [
     {
       title: "Delivery Details",
@@ -40,22 +38,6 @@ const Checkout = () => {
 
   return (
     <>
-      <div class="preloader">
-        <div class="loader">
-          <div class="ytp-spinner">
-            <div class="ytp-spinner-container">
-              <div class="ytp-spinner-rotator">
-                <div class="ytp-spinner-left">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-                <div class="ytp-spinner-right">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <Navbar />
       <CheckoutContainer>
         <Steps current={current} size="small">
@@ -64,7 +46,6 @@ const Checkout = () => {
           ))}
         </Steps>
         <StepsContent>{steps[current].content}</StepsContent>
-        {/* <DeliveryDetails /> */}
       </CheckoutContainer>
     </>
   );

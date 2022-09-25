@@ -1,12 +1,11 @@
-import { Spin, message, Input } from "antd";
-import React, { useContext, useEffect, useLayoutEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import DeliverTo from "../components/DeliverTo";
 import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { AppContext } from "../context/Context";
+import SkeletonAnimation from "../utils/skeleton";
 
 const Menu = () => {
   const { products, handleAddToCart, fetchProducts, fetchSpecificCategory } =
@@ -24,29 +23,13 @@ const Menu = () => {
 
   return (
     <>
-      <div class="preloader">
-        <div class="loader">
-          <div class="ytp-spinner">
-            <div class="ytp-spinner-container">
-              <div class="ytp-spinner-rotator">
-                <div class="ytp-spinner-left">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-                <div class="ytp-spinner-right">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <Navbar />
       <MenuContainer>
         <SideBar />
         <Wrapper>
           <MealsContainer>
             {!products || products.length === 0 ? (
-              <Spin />
+              <SkeletonAnimation />
             ) : (
               products.map((product) => (
                 <MealCard

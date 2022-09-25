@@ -1,7 +1,7 @@
-import {  Tooltip } from "antd";
+import { Tooltip } from "antd";
 import React, { useContext } from "react";
 import { HiLocationMarker } from "react-icons/hi";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AppContext } from "../context/Context";
 
@@ -11,12 +11,6 @@ const DeliverTo = () => {
 
   return (
     <Container>
-      {/* <input
-        style={{ borderRadius: "20px" }}
-        prefix={<HiLocationMarker />}
-        defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
-        onChange={(e) => setDeliveryAddress(e.target.value)}
-      /> */}
       <div class="input-wrapper">
         <Tooltip title="Pick location from map">
           <HiLocationMarker
@@ -28,7 +22,7 @@ const DeliverTo = () => {
         <input
           class="input-field"
           type="text"
-          placeholder="Address"
+          placeholder="Delivery Address"
           defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
           onChange={(e) => setDeliveryAddress(e.target.value)}
         />
@@ -65,7 +59,7 @@ const Container = styled.div`
     width: 100%;
     padding: 7px 15px;
     padding-left: 45px;
-    background: #eeeeee;
+    background: #f7f7f7;
     border-radius: 20px;
     border: none;
   }

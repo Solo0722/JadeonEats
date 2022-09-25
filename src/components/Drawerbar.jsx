@@ -1,4 +1,4 @@
-import { Avatar, Drawer } from "antd";
+import { Button, Drawer } from "antd";
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
 import { MealLinksContainer } from "./SideBar";
@@ -19,10 +19,9 @@ const Drawerbar = () => {
 
   return (
     <DrawerContainer>
-      <Avatar
-        icon={<BiMenu style={{ marginTop: "5px" }} />}
-        size="small"
-        shape="square"
+      <Button
+        icon={<BiMenu size={20} />}
+        type="text"
         onClick={showDrawer}
         style={{
           background: "#fff",

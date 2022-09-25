@@ -58,9 +58,17 @@ const LocationDetails = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  width: 60%;
+  margin: 0 auto;
 
   label {
     margin-top: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 90%;
+    }
   }
 `;
 

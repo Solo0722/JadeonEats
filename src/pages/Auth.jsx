@@ -20,22 +20,6 @@ const Auth = () => {
 
   return (
     <Wrapper>
-      <div class="preloader">
-        <div class="loader">
-          <div class="ytp-spinner">
-            <div class="ytp-spinner-container">
-              <div class="ytp-spinner-rotator">
-                <div class="ytp-spinner-left">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-                <div class="ytp-spinner-right">
-                  <div class="ytp-spinner-circle"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <AuthContainer className="auth">
         <h2>{isSignUp ? "Create a new account" : "Sign in to your account"}</h2>
         <Form
@@ -51,7 +35,6 @@ const Auth = () => {
         >
           {isSignUp && (
             <Form.Item
-              label="First Name"
               name="firstName"
               rules={[
                 {
@@ -61,12 +44,11 @@ const Auth = () => {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="First name" />
             </Form.Item>
           )}
           {isSignUp && (
             <Form.Item
-              label="Last Name"
               name="lastName"
               rules={[
                 {
@@ -76,12 +58,11 @@ const Auth = () => {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="Last name" />
             </Form.Item>
           )}
 
           <Form.Item
-            label="Email"
             name="email"
             rules={[
               {
@@ -91,12 +72,11 @@ const Auth = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Email" />
           </Form.Item>
 
           {isSignUp && (
             <Form.Item
-              label="Phone number"
               name="phoneNumber"
               rules={[
                 {
@@ -106,12 +86,11 @@ const Auth = () => {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="Phone number" />
             </Form.Item>
           )}
 
           <Form.Item
-            label="Password"
             name="password"
             rules={[
               {
@@ -121,7 +100,7 @@ const Auth = () => {
               },
             ]}
           >
-            <Input.Password />
+            <Input.Password placeholder="Password" />
           </Form.Item>
 
           <Form.Item>
@@ -155,6 +134,18 @@ const AuthContainer = styled.div`
   min-height: 400px;
   padding: 20px;
   margin: auto;
+
+  input,
+  button {
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 1px;
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 90%;
+    }
+  }
 `;
 
 export default Auth;
