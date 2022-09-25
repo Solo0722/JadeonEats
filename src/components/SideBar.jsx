@@ -1,17 +1,11 @@
-import { CloseCircleOutlined } from "@ant-design/icons";
-import { Button, List } from "antd";
-import React, { useContext, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { AppContext } from "../context/Context";
-import SearchTab from "./SearchTab";
+import { RenderCategoryList } from "../utils/data";
 
 const SideBar = () => {
-  const { renderCategoryList } = useContext(AppContext);
-
   return (
     <SidebarContainer className="sidebar">
-      <TitleContainer></TitleContainer>
-      <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
+      <MealLinksContainer>{RenderCategoryList()}</MealLinksContainer>
     </SidebarContainer>
   );
 };
@@ -24,9 +18,10 @@ const SidebarContainer = styled.div`
   bottom: 0;
   overflow-y: scroll;
 
-  /* &::-webkit-scrollbar {
-    display: none;
-  } */
+  &::-webkit-scrollbar {
+    /* display: none; */
+    z-index:-10;
+  }
 
   @media screen and (max-width: 768px) {
     & {

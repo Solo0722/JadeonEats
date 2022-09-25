@@ -1,15 +1,18 @@
 import { Result, Button } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const PageNotFound = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Result
         title="404"
         status={"404"}
         subTitle={"Sorry, the page you are trying to reach could not be found"}
-        extra={<Button href="/">Go Back Home</Button>}
+        extra={<Button onClick={() => navigate("/")}>Go Back Home</Button>}
       />
     </Container>
   );

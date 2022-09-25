@@ -11,6 +11,7 @@ import Search from "./pages/Search";
 import AuthContext from "./context/AuthContext";
 import Auth from "./pages/Auth";
 import Success from "./pages/Success";
+import LocationPicker from "./utils/map";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
+            <Route path="/location-picker" element={<LocationPicker />} />
             <Route path="/menu/:category" element={<Menu />} />
             <Route path="/search" element={<Search />} />
             <Route path="/meals/:id" element={<MealDetail />} />

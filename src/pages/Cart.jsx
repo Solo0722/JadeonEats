@@ -1,19 +1,17 @@
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Empty, List, Spin } from "antd";
 import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CartItem from "../components/CartItem";
 import Navbar from "../components/Navbar";
 import { AppContext } from "../context/Context";
 
 const Cart = () => {
-  const {
-    cart,
-    handleRemoveFromCart,
-    handleEmptyCart,
-    handleUpdateCartQty,
-    fetchCart,
-  } = useContext(AppContext);
+  const { cart, handleRemoveFromCart, handleEmptyCart, handleUpdateCartQty } =
+    useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const EmptyCart = () => {
     return (
@@ -21,7 +19,7 @@ const Cart = () => {
         <Button
           icon={<ArrowLeftOutlined />}
           type="text"
-          href="/menu"
+          onClick={() => navigate("/menu")}
           style={{ marginTop: 20 }}
         >
           Continue Shopping
@@ -56,16 +54,15 @@ const Cart = () => {
           <Button
             icon={<ArrowLeftOutlined />}
             type="text"
-            href="/menu"
+            onClick={() => navigate("/menu")}
             style={{ marginTop: 20 }}
           >
             Continue Shopping
           </Button>
           <CheckoutBtnsContainer>
             <Button
-              // block
               type="primary"
-              href={"/checkout"}
+              onClick={() => navigate("/checkout")}
               style={{ marginRight: "10px" }}
             >
               Checkout
@@ -85,6 +82,22 @@ const Cart = () => {
 
   return (
     <>
+      <div class="preloader">
+        <div class="loader">
+          <div class="ytp-spinner">
+            <div class="ytp-spinner-container">
+              <div class="ytp-spinner-rotator">
+                <div class="ytp-spinner-left">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+                <div class="ytp-spinner-right">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Navbar />
       <CartContainer>
         {!cart.line_items ? (

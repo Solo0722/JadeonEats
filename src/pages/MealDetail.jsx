@@ -52,15 +52,7 @@ const MealDetail = () => {
 
               <AmountWrapper>
                 <h3> {product.price.formatted_with_symbol}</h3>
-                <Button
-                  icon={<StarFilled style={{ color: "gold" }} />}
-                  type="text"
-                >
-                  4.6
-                </Button>
-                <Button icon={<ClockCircleOutlined />} type="text">
-                  5mins
-                </Button>
+
                 <Button
                   icon={<ShoppingOutlined />}
                   type="primary"
@@ -119,7 +111,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin-left: 20%;
   margin-bottom: 20px;
-  padding: 5px;
+  padding: 5px 20px;
 
   @media screen and (max-width: 768px) {
     & {

@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Drawerbar from "./Drawerbar";
 import { AppContext } from "../context/Context";
 import SwitchTheme from "./SwitchTheme";
+import DeliverTo from "./DeliverTo";
 
 const Navbar = () => {
   const { cart } = useContext(AppContext);
@@ -44,26 +45,19 @@ const Navbar = () => {
         <Drawerbar />
         <img src="/salad.png" alt="logo" width={25} height={25} />
       </LogoContainer>
+      <DeliverTo />
 
       <ToolsContainer>
-        <Avatar
-          icon={<BiSearch style={{ marginTop: "5px" }} />}
-          size="small"
-          shape="square"
+        <Button
+          className="tools-item"
+          icon={<BiSearch />}
+          type="text"
           onClick={() => navigate("/search")}
-          style={{
-            background: "#fff",
-            color: "#000",
-            marginRight: "10px",
-            cursor: "pointer",
-          }}
         />
-        <SwitchTheme />
-        <Avatar
-          icon={<BiUser style={{ marginTop: "5px" }} />}
-          size="small"
-          shape="square"
-          style={{ background: "#fff", color: "#000", cursor: "pointer" }}
+        <Button
+          className="tools-item"
+          icon={<BiUser />}
+          type="text"
           onClick={() => navigate("/auth")}
         />
         <CartContainer
@@ -73,23 +67,17 @@ const Navbar = () => {
                 ? "none"
                 : "block"
             }`,
-            marginLeft: "10px",
           }}
         >
           <Badge
             count={cart.total_items}
             overflowCount={"9"}
-            color={"orangered"}
+            color={"#e8505b"}
             children={
-              <Avatar
-                icon={<ShoppingCartOutlined style={{ marginTop: "5px" }} />}
-                size="small"
-                shape="square"
-                style={{
-                  background: "#fff",
-                  color: "#000",
-                  cursor: "pointer",
-                }}
+              <Button
+                className="tools-item"
+                type="text"
+                icon={<ShoppingCartOutlined />}
                 onClick={() => navigate("/cart")}
               />
             }
@@ -102,12 +90,13 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
   width: 100%;
-  height: 55px;
+  height: 60px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+  background: #fff;
   position: sticky;
   top: 0%;
   z-index: 100;

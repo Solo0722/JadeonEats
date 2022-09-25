@@ -1,67 +1,11 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect,useContext } from "react";
 import Commerce from "@chec/commerce.js";
-import { Avatar, Button, List } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
 import { AuthenticationContext } from "./AuthContext";
 
 export const AppContext = createContext();
 
 const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
-
-const categories = [
-  {
-    id: "",
-    name: "Deals",
-    image: "/deals.png",
-  },
-  {
-    id: "cat_nPEVlNLV0oa7dM",
-    name: "Breakfast",
-    image: "/coffeeandtea.png",
-  },
-  {
-    id: "cat_bWZ3l86L8okpEQ",
-    name: "Lunch",
-    image: "/FastFood_BrowseHome@3x.png",
-  },
-  {
-    id: "cat_QG375vVjQ5rMOg",
-    name: "Supper",
-    image: "/comfortfood.png",
-  },
-  {
-    id: "cat_0egY5eRMpl3QnA",
-    name: "Local",
-    image: "/comfortfood.png",
-  },
-  {
-    id: "cat_RqEv5xLz15Zz4j",
-    name: "Continental",
-    image: "/american.png",
-  },
-  {
-    id: "",
-    name: "Bakery",
-    image: "/bakery.png",
-  },
-  {
-    id: "cat_8XxzoB8qglPQAZ",
-    name: "Desserts",
-    image: "/dessert.png",
-  },
-  {
-    id: "cat_8XxzoB8qglPQAZ",
-    name: "Drinks",
-    image: "/coffeeandtea.png",
-  },
-  {
-    id: "cat_8XxzoB8qglPQAZ",
-    name: "Snacks",
-    image: "/icecreamandyogort.png",
-  },
-];
 
 const Context = ({ children }) => {
   const [products, setProducts] = useState([]);
@@ -178,86 +122,6 @@ const Context = ({ children }) => {
     }
   };
 
-  const renderCategoryList = () => {
-    return (
-      <>
-        <List bordered={false}>
-          <List.Item style={{ border: "none" }}>
-            <Button
-              icon={<HomeOutlined style={{ marginRight: "10px" }} />}
-              type="text"
-              block
-              href="/menu"
-              style={{
-                textAlign: "left",
-                borderLeft: `${
-                  location.pathname === "/menu" ? "2px solid orangered" : ""
-                }`,
-                opacity: `${location.pathname === "/menu" ? "1" : "0.7"}`,
-                fontWeight: `${location.pathname === "/menu" ? "bold" : ""}`,
-              }}
-            >
-              Home
-            </Button>
-          </List.Item>
-          {categories.map((cat) => (
-            <List.Item key={cat.name} style={{ border: "none" }}>
-              <Button
-                type="text"
-                block
-                href={`/menu/${cat.name.toLowerCase()}`}
-                icon={
-                  <img
-                    src={cat.image}
-                    width={25}
-                    height={25}
-                    style={{ marginRight: "10px" }}
-                  />
-                }
-                style={{
-                  textAlign: "left",
-                  borderLeft: `${
-                    location.pathname === `/menu/${cat.name.toLowerCase()}`
-                      ? "2px solid orangered"
-                      : ""
-                  }`,
-                  opacity: `${
-                    location.pathname === `/menu/${cat.name.toLowerCase()}`
-                      ? "1"
-                      : "0.7"
-                  }`,
-                  fontWeight: `${
-                    location.pathname === `/menu/${cat.name.toLowerCase()}`
-                      ? "bold"
-                      : ""
-                  }`,
-                }}
-              >
-                {cat.name}
-              </Button>
-            </List.Item>
-          ))}
-        </List>
-        {/* {currentUser ? (
-          <Button
-            icon={<Avatar children={currentUser.firstName.slice(0, 1)} />}
-          >
-            {currentUser.email}
-          </Button>
-        ) : (
-          <Button
-            href="/login"
-            type="primary"
-            block
-            style={{ marginTop: "30px" }}
-          >
-            Login/Sign up
-          </Button>
-        )} */}
-      </>
-    );
-  };
-
   useEffect(() => {
     fetchCart();
   }, []);
@@ -289,7 +153,6 @@ const Context = ({ children }) => {
         fetchProductsBySearch,
         fetchSingleProduct,
 
-        renderCategoryList,
         generateCheckoutToken,
         setDeliveryAddress,
         handleCaptureCheckout,

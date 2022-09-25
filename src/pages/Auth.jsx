@@ -20,6 +20,22 @@ const Auth = () => {
 
   return (
     <Wrapper>
+      <div class="preloader">
+        <div class="loader">
+          <div class="ytp-spinner">
+            <div class="ytp-spinner-container">
+              <div class="ytp-spinner-rotator">
+                <div class="ytp-spinner-left">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+                <div class="ytp-spinner-right">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <AuthContainer className="auth">
         <h2>{isSignUp ? "Create a new account" : "Sign in to your account"}</h2>
         <Form

@@ -1,10 +1,10 @@
-import { Avatar, Button, Drawer } from "antd";
+import { Avatar, Drawer } from "antd";
 import { BiMenu } from "react-icons/bi";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MealLinksContainer } from "./SideBar";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { AppContext } from "../context/Context";
+import { RenderCategoryList } from "../utils/data";
 
 const Drawerbar = () => {
   const [visible, setVisible] = useState(false);
@@ -16,8 +16,6 @@ const Drawerbar = () => {
   };
 
   const location = useLocation();
-
-  const { renderCategoryList } = useContext(AppContext);
 
   return (
     <DrawerContainer>
@@ -48,7 +46,7 @@ const Drawerbar = () => {
           paddingTop: "0px",
         }}
       >
-        <MealLinksContainer>{renderCategoryList()}</MealLinksContainer>
+        <MealLinksContainer>{RenderCategoryList()}</MealLinksContainer>
       </Drawer>
     </DrawerContainer>
   );

@@ -1,328 +1,724 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import DeliveryAddressForm from "../components/DeliveryAddressForm";
-import { ToolsContainer } from "../components/Navbar";
-import { Button, Carousel } from "antd";
-import Footer from "../components/Footer";
 import { AppContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-import { FaQuoteLeft } from "react-icons/fa";
-import SwitchTheme from "../components/SwitchTheme";
-import { UserOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const { deliveryAddress } = useContext(AppContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (deliveryAddress) {
-  //     navigate("/menu");
-  //   }
-  // }, []);
-
-  const location = {
-    address: "University of Winneba, Kumasi campus - Ghana",
-    lat: "",
-    lng: "",
-  };
-
-  const reasons = [
-    {
-      title: "Easy to order",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/easyorder.png",
-    },
-    {
-      title: "Fatest delivery",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/bike2.png",
-    },
-    {
-      title: "Best quality",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/food-delivery.png",
-    },
-  ];
-
-  const reviews = [
-    {
-      name: "Solomon O. Ansah",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/myImage.jpg",
-    },
-    {
-      name: "Solomon O. Ansah",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/myImage.jpg",
-    },
-    {
-      name: "Solomon O. Ansah",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in cupiditate. Cum praesentium voluptatum quam sit minima quisquam consectetur ipsa magnam illo culpa reiciendis, dicta, harum et eligendi. Eum, dolore.",
-      img: "/myImage.jpg",
-    },
-  ];
-
   return (
     <>
-      <HomeContainer>
-        <LandingContainer>
-          <Nav>
-            <img src="/salad.png" alt="logo" width={25} height={25} />
+      <div class="preloader">
+        <div class="loader">
+          <div class="ytp-spinner">
+            <div class="ytp-spinner-container">
+              <div class="ytp-spinner-rotator">
+                <div class="ytp-spinner-left">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+                <div class="ytp-spinner-right">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <ToolsContainer>
-              <Button
-                type="primary"
-                shape="round"
-                onClick={() => navigate("/auth")}
+      <header class="header">
+        <div class="navbar-area">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                  <a class="navbar-brand" href="index.html">
+                    <img src="/salad.png" alt="Logo" width={30} height={30} />
+                  </a>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="toggler-icon"></span>
+                    <span class="toggler-icon"></span>
+                    <span class="toggler-icon"></span>
+                  </button>
+
+                  <div
+                    class="collapse navbar-collapse sub-menu-bar"
+                    id="navbarSupportedContent"
+                  >
+                    <ul id="nav" class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                        <a class="page-scroll" href="#home">
+                          Home
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="page-scroll" href="#services">
+                          Services
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="page-scroll" href="#about">
+                          About
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="page-scroll" href="#how">
+                          How It Works
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="page-scroll" href="#testimonial">
+                          Testimonials
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="home" class="hero-section">
+        <div class="hero-shape">
+          <img src="assets/img/hero/hero-shape.svg" alt="" class="shape" />
+        </div>
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="hero-content">
+                <h1 class="wow fadeInUp" data-wow-delay=".2s">
+                  <span>Hungry?</span>{" "}
+                  <span style={{ fontWeight: "bold", color: "#e8505b" }}>
+                    Order Food,{" "}
+                  </span>
+                  <span>Get Happiness To Your Doorstep</span>
+                </h1>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  Enjoy the taste of food made by the best chefs in the world at
+                  home!We cook with love and deliver while it’s still piping
+                  hot.
+                </p>
+                <a
+                  href="/menu"
+                  class="main-btn btn-hover wow fadeInUp"
+                  data-wow-delay=".6s"
+                >
+                  Get Started
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+                <img src="assets/img/hero/hero-img.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="service-section pt-150">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8">
+              <div class="section-title text-center mb-70">
+                <span class="wow fadeInUp" data-wow-delay=".2s">
+                  Delivery Services
+                </span>
+                <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                  All Essentials You Need
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-1.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Food</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".4s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-2.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Grocery</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".6s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-3.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Furniture</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-4.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Medicine</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".4s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-5.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Electronics</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-service wow fadeInUp" data-wow-delay=".6s">
+                <div class="icon">
+                  <img src="assets/img/service/service-icon-6.svg" alt="" />
+                </div>
+                <div class="content">
+                  <h3>Clothes</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section pt-150">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="about-img wow fadeInUp" data-wow-delay=".5s">
+                <img src="assets/img/about/about-img.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="about-content">
+                <div class="section-title">
+                  <span class="wow fadeInUp" data-wow-delay=".2s">
+                    About Us
+                  </span>
+                  <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                    On-time Delivery and Customer Satisfaction
+                  </h1>
+                  <p class="wow fadeInUp" data-wow-delay=".6s">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua.
+                  </p>
+                </div>
+                <div
+                  class="rating-meta d-flex align-items-center wow fadeInUp"
+                  data-wow-delay=".65s"
+                >
+                  <h5>Rating 4.8</h5>
+                  <div class="rating">
+                    <i class="lni lni-star-filled"></i>
+                    <i class="lni lni-star-filled"></i>
+                    <i class="lni lni-star-filled"></i>
+                    <i class="lni lni-star-filled"></i>
+                    <i class="lni lni-star-filled"></i>
+                  </div>
+                </div>
+
+                <div class="counter-up wow fadeInUp" data-wow-delay=".8s">
+                  <div class="single-counter">
+                    <h3
+                      id="secondo1"
+                      class="countup"
+                      cup-end="1"
+                      cup-append="M+"
+                    >
+                      1{" "}
+                    </h3>
+                    <h5>Download</h5>
+                  </div>
+                  <div class="single-counter position-relative">
+                    <h3
+                      id="secondo2"
+                      class="countup"
+                      cup-end="234"
+                      cup-append="K+"
+                    >
+                      234{" "}
+                    </h3>
+                    <h5>Happy User</h5>
+                  </div>
+                  <div class="single-counter">
+                    <h3
+                      id="secondo3"
+                      class="countup"
+                      cup-end="34"
+                      cup-append="K+"
+                    >
+                      34{" "}
+                    </h3>
+                    <h5>Reviews</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="how" class="delivery-section pt-150">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-5">
+              <div class="delivery-content">
+                <div class="section-title">
+                  <span class="wow fadeInUp" data-wow-delay=".2s">
+                    Fast Delivery
+                  </span>
+                  <h1 class="mb-35 wow fadeInUp" data-wow-delay=".4s">
+                    Order Now, Recieve Within 30mins
+                  </h1>
+                  <p class="mb-35 wow fadeInUp" data-wow-delay=".6s">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore hdht dolore
+                    magna aliquyam erat, sed diam voluptua.
+                  </p>
+                  <a
+                    href="javscript:void(0)"
+                    class="main-btn btn-hover wow fadeInUp"
+                    data-wow-delay=".8s"
+                  >
+                    Download App
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 order-first order-lg-last">
+              <div class="delivery-img wow fadeInUp" data-wow-delay=".5s">
+                <img src="assets/img/delivery/delivery-img.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="received" class="about-section received-section pt-150">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div
+                class="about-img received-img wow fadeInUp"
+                data-wow-delay=".5s"
               >
-                Sign in
-              </Button>
-            </ToolsContainer>
-          </Nav>
-          <BodyWrapper>
-            <h1>
-              Order <span style={{ color: "orangered" }}>food</span> to your
-              door.
-            </h1>
-            <p>
-              Get served with the best quality local and continental delicacies.
-            </p>
-            <DeliveryAddressForm />
-          </BodyWrapper>
-        </LandingContainer>
-        {/* <AdvertContainer>
-          <AdWrapper>
-            {reasons.map((reason, i) => (
-              <ReasonCard key={i}>
-                <img src={reason.img} alt="reason-image" />
-                <h2>{reason.title}</h2>
-              </ReasonCard>
-            ))}
-          </AdWrapper>
-        </AdvertContainer> */}
-        {/* <ReviewsSection>
-          <h1>Our Customers say</h1>
-          <AdWrapper2>
-            {reviews.map((review, i) => (
-              <ReviewCard key={i}>
-                <img src={review.img} alt="reason-image" />
-                <h2>{review.name}</h2>
-                <Quote>
-                  <FaQuoteLeft />
-                </Quote>
-                <p>{review.body}</p>
-              </ReviewCard>
-            ))}
-          </AdWrapper2>
-        </ReviewsSection> */}
-      </HomeContainer>
-      <Footer />
+                <img src="assets/img/received/received-img.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="about-content received-content">
+                <div class="section-title">
+                  <span class="wow fadeInUp" data-wow-delay=".2s">
+                    Contactless Delivery
+                  </span>
+                  <h1 class="mb-25 wow fadeInUp" data-wow-delay=".4s">
+                    On-time Delivery to Your Doorstep
+                  </h1>
+                  <p class="wow fadeInUp" data-wow-delay=".6s">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonial" class="testimonial-section img-bg pt-150 pb-40">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="section-title mb-60 text-center">
+                <span class="wow fadeInUp" data-wow-delay=".2s">
+                  Testimonials
+                </span>
+                <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                  What Our Users Says
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="row testimonial-wrapper">
+            <div class="col-lg-4 col-md-6 -mt-30">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".2s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>Ena Shah</h5>
+                    <p>Teacher at Abc School</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 -mt-60">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".4s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>Mrs. Gosh</h5>
+                    <p>Actor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".6s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>John Doe</h5>
+                    <p>Model</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 -mt-30">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".2s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-4.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>Jonathan Smith</h5>
+                    <p>Creative Designer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 -mt-60">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".4s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-5.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>Sara A. K.</h5>
+                    <p>Heroine</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-testimonial wow fadeInUp" data-wow-delay=".6s">
+                <div class="rating">
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                  <i class="lni lni-star-filled"></i>
+                </div>
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
+                    diam non eirmod tempor invidunt ut labore etdo magna
+                    aliquyam erat, sed diam vero eos et accusam et justo duo
+                    dolores et ea rebum clita kasd gubergren.
+                  </p>
+                </div>
+                <div class="info">
+                  <div class="image">
+                    <img
+                      src="assets/img/testimonial/testimonial-6.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="text">
+                    <h5>David Smith</h5>
+                    <p>Businessman</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="partner" class="partner-section pt-60 pb-60">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-sm-6">
+              <div class="single-partner wow fadeInUp" data-wow-delay=".2s">
+                <img src="assets/img/partners/partner-1.svg" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="single-partner wow fadeInUp" data-wow-delay=".4s">
+                <img src="assets/img/partners/partner-2.svg" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="single-partner wow fadeInUp" data-wow-delay=".6s">
+                <img src="assets/img/partners/partner-3.svg" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="single-partner wow fadeInUp" data-wow-delay=".8s">
+                <img src="assets/img/partners/partner-4.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer id="footer" class="footer pt-100 pb-70">
+        <div class="footer-shape">
+          <img
+            src="assets/img/footer/footer-left.svg"
+            alt=""
+            class="shape shape-1"
+          />
+          <img
+            src="assets/img/footer/footer-right.svg"
+            alt=""
+            class="shape shape-2"
+          />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget wow fadeInUp" data-wow-delay=".2s">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="/salad.png" alt="Logo" width={50} height={50} />
+                  </a>
+                </div>
+                <div class="download-btns">
+                  <a href="">
+                    <span class="icon">
+                      <i class="lni lni-apple"></i>
+                    </span>
+                    <span class="text">
+                      Download on the <b>App Store</b>{" "}
+                    </span>
+                  </a>
+                  <a href="">
+                    <span class="icon">
+                      <i class="lni lni-play-store"></i>
+                    </span>
+                    <span class="text">
+                      GET IT ON <b>Play Store</b>{" "}
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget wow fadeInUp" data-wow-delay=".4s">
+                <h3>About Us</h3>
+                <ul class="links">
+                  <li>
+                    <a href="">Home</a>
+                  </li>
+                  <li>
+                    <a href="">Services</a>
+                  </li>
+                  <li>
+                    <a href="">About Us</a>
+                  </li>
+                  <li>
+                    <a href="">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget wow fadeInUp" data-wow-delay=".6s">
+                <h3>About</h3>
+                <ul class="links">
+                  <li>
+                    <a href="">Partners</a>
+                  </li>
+                  <li>
+                    <a href="">Terms of Service</a>
+                  </li>
+                  <li>
+                    <a href="">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="">Refund Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget wow fadeInUp" data-wow-delay=".8s">
+                <h3>Support</h3>
+                <ul class="links">
+                  <li>
+                    <a href="">Open Ticket</a>
+                  </li>
+                  <li>
+                    <a href="">Community</a>
+                  </li>
+                  <li>
+                    <a href="">Return Policy</a>
+                  </li>
+                  <li>
+                    <a href="">Accessibility</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+      </a>
+      <script src="assets/js/bootstrap.5.0.0.alpha-2-min.js"></script>
+      <script src="assets/js/count-up.min.js"></script>
+      <script src="assets/js/wow.min.js"></script>
+      <script src="assets/js/main.js"></script>
     </>
   );
 };
-
-const HomeContainer = styled.div`
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
-`;
-
-const Nav = styled.div`
-  height: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-`;
-
-const LandingContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-image: url("/bak.jpg"),
-    linear-gradient(to left, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: darken;
-
-  h1 {
-    font-size: 3.5rem;
-    font-weight: bolder;
-    text-align: center;
-    padding: 0.5rem;
-    margin: 0.5rem;
-    color: #fff;
-    animation: fadeIn 1s ease-in both;
-  }
-
-  p {
-    text-align: center;
-    color: #ddd;
-    animation: fadeIn 1s ease-in both;
-    animation-delay: 1s;
-  }
-
-  input::placeholder {
-    font-size: 0.8rem;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translate3d(0, -20%, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
-`;
-
-const BodyWrapper = styled.div`
-  width: 60%;
-  margin: auto;
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 90%;
-    }
-  }
-`;
-
-const AdvertContainer = styled.div`
-  min-height: 70vh;
-  padding: 10px 0;
-
-  h1 {
-    font-weight: bolder;
-  }
-`;
-
-const AdWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-
-  @media screen and (max-width: 768px) {
-    & {
-      flex-direction: column;
-    }
-  }
-`;
-
-const ReasonCard = styled.div`
-  width: 270px;
-  min-height: 270px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  border-radius: 7px;
-  margin: 10px 0;
-
-  img {
-    width: 170px;
-    height: 170px;
-  }
-
-  h2 {
-    color: orangered;
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 100%;
-    }
-  }
-`;
-
-const ReviewsSection = styled.div`
-  min-height: 70vh;
-  padding: 10px 0;
-
-  h1 {
-    font-weight: bolder;
-  }
-`;
-
-const AdWrapper2 = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  @media screen and (max-width: 768px) {
-    & {
-      flex-direction: column;
-    }
-  }
-`;
-
-const ReviewCard = styled.div`
-  width: 270px;
-  min-height: 270px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 7px;
-  margin: 10px 0;
-
-  img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-
-  p {
-    font-style: italic;
-    opacity: 0.7;
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 100%;
-    }
-  }
-`;
-
-const Quote = styled.div`
-  color: orangered;
-  margin: 10px 0;
-`;
-
-const MapContainer = styled.div`
-  height: 80vh;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-`;
-
-const MapWrapper = styled.div`
-  width: 100%;
-`;
 
 export default Home;
