@@ -1,3 +1,4 @@
+import { message } from "antd";
 import React from "react";
 
 const Home = () => {
@@ -227,7 +228,7 @@ const Home = () => {
                     >
                       1{" "}
                     </h3>
-                    <h5>Download</h5>
+                    <h5>Unhappy</h5>
                   </div>
                   <div class="single-counter position-relative">
                     <h3
@@ -238,7 +239,7 @@ const Home = () => {
                     >
                       234{" "}
                     </h3>
-                    <h5>Happy User</h5>
+                    <h5>Happy Users</h5>
                   </div>
                   <div class="single-counter">
                     <h3
@@ -275,11 +276,11 @@ const Home = () => {
                     magna aliquyam erat, sed diam voluptua.
                   </p>
                   <a
-                    href="javscript:void(0)"
+                    href="/menu"
                     class="main-btn btn-hover wow fadeInUp"
                     data-wow-delay=".8s"
                   >
-                    Download App
+                    Go to food menu
                   </a>
                 </div>
               </div>
@@ -365,8 +366,8 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>Ena Shah</h5>
-                    <p>Teacher at Abc School</p>
+                    <h5>Jesse</h5>
+                    <p>Engineering student</p>
                   </div>
                 </div>
               </div>
@@ -396,8 +397,8 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>Mrs. Gosh</h5>
-                    <p>Actor</p>
+                    <h5>Gershon Owusu</h5>
+                    <p>KNUST Student</p>
                   </div>
                 </div>
               </div>
@@ -427,8 +428,8 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>John Doe</h5>
-                    <p>Model</p>
+                    <h5>Ama Konadu</h5>
+                    <p>Final year student</p>
                   </div>
                 </div>
               </div>
@@ -458,8 +459,8 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>Jonathan Smith</h5>
-                    <p>Creative Designer</p>
+                    <h5>Dr. Obour</h5>
+                    <p>KNUST Lecturer</p>
                   </div>
                 </div>
               </div>
@@ -489,8 +490,8 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>Sara A. K.</h5>
-                    <p>Heroine</p>
+                    <h5>Emmanuella</h5>
+                    <p>Catering and Hospitality Student</p>
                   </div>
                 </div>
               </div>
@@ -520,7 +521,7 @@ const Home = () => {
                     />
                   </div>
                   <div class="text">
-                    <h5>David Smith</h5>
+                    <h5>David Ansah</h5>
                     <p>Businessman</p>
                   </div>
                 </div>
@@ -579,7 +580,7 @@ const Home = () => {
                   </a>
                 </div>
                 <div class="download-btns">
-                  <a href="">
+                  <a href="#">
                     <span class="icon">
                       <i class="lni lni-apple"></i>
                     </span>
@@ -587,7 +588,7 @@ const Home = () => {
                       Download on the <b>App Store</b>{" "}
                     </span>
                   </a>
-                  <a href="">
+                  <a href="#">
                     <span class="icon">
                       <i class="lni lni-play-store"></i>
                     </span>

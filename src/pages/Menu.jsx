@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import DeliverTo from "../components/DeliverTo";
 import MealCard from "../components/MealCard";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
@@ -27,6 +28,9 @@ const Menu = () => {
       <MenuContainer>
         <SideBar />
         <Wrapper>
+          <AddressWrapper>
+            <DeliverTo />
+          </AddressWrapper>
           <MealsContainer>
             {!products || products.length === 0 ? (
               <SkeletonAnimation />
@@ -74,6 +78,17 @@ const MealsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+`;
+
+const AddressWrapper = styled.div`
+  display: none;
+  width: 100%;
+  margin-bottom: 15px;
+  @media screen and (max-width: 768px) {
+    & {
+      display: block;
+    }
+  }
 `;
 
 export default Menu;

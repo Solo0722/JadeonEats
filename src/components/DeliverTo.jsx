@@ -11,7 +11,7 @@ const DeliverTo = () => {
 
   return (
     <Container>
-      <div class="input-wrapper">
+      <div className="input-wrapper">
         <Tooltip title="Pick location from map">
           <HiLocationMarker
             className="icon"
@@ -20,7 +20,7 @@ const DeliverTo = () => {
           />
         </Tooltip>
         <input
-          class="input-field"
+          className="input-field"
           type="text"
           placeholder="Delivery Address"
           defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
@@ -32,7 +32,7 @@ const DeliverTo = () => {
 };
 
 const Container = styled.div`
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   padding: 5px 10px;
   display: flex;
@@ -62,12 +62,6 @@ const Container = styled.div`
     background: #f7f7f7;
     border-radius: 20px;
     border: none;
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      display: none;
-    }
   }
 `;
 

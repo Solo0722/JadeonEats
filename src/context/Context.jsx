@@ -1,13 +1,23 @@
-import React, { createContext, useState, useEffect,useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import Commerce from "@chec/commerce.js";
-import { useLocation } from "react-router-dom";
-import { AuthenticationContext } from "./AuthContext";
+import { auth, google_provider } from "../utils/firebase";
+import {
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
 
 const commerce = new Commerce(process.env.REACT_APP_CHEC_PUBLIC_KEY, true);
 
 const Context = ({ children }) => {
+  const navigate = useNavigate();
+
+  //states
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
@@ -16,19 +26,15 @@ const Context = ({ children }) => {
   const [shippingOption, setShippingOption] = useState("");
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [shippingData, setShippingData] = useState(null);
   const [deliveryAddress, setDeliveryAddress] = useState(
     JSON.parse(localStorage.getItem("deliveryAddress"))
   );
-  const [shippingData, setShippingData] = useState(null);
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser"))
+  );
 
-  const { currentUser } = useContext(AuthenticationContext);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
-  }, [deliveryAddress]);
-
+  //functions
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
 
@@ -122,6 +128,52 @@ const Context = ({ children }) => {
     }
   };
 
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, google_provider)
+      .then((result) => {
+        setCurrentUser(result.user);
+        navigate("/menu");
+      })
+      .catch((err) => {
+        message.error("Sign in failed.Try again!");
+      });
+  };
+
+  const signUpUser = (formData) => {
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((cred) => {
+        setCurrentUser(cred.user);
+        navigate("/menu");
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+  };
+
+  const signInUser = (formData) => {
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((cred) => {
+        setCurrentUser(cred.user);
+        navigate("/menu");
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+  };
+
+  const logoutUser = () => {
+    signOut(auth)
+      .then(() => {
+        message.success("User logged out successfully");
+        setCurrentUser(null);
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+  };
+
+  //useEffects
+
   useEffect(() => {
     fetchCart();
   }, []);
@@ -129,6 +181,14 @@ const Context = ({ children }) => {
   useEffect(() => {
     checkoutToken && fetchShippingOption(checkoutToken.id);
   }, [checkoutToken]);
+
+  useEffect(() => {
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }, [currentUser]);
+
+  useEffect(() => {
+    localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
+  }, [deliveryAddress]);
 
   return (
     <AppContext.Provider
@@ -139,6 +199,7 @@ const Context = ({ children }) => {
         shippingOption,
         checkoutToken,
         deliveryAddress,
+        currentUser,
 
         fetchCart,
         fetchProducts,
@@ -157,7 +218,13 @@ const Context = ({ children }) => {
         setDeliveryAddress,
         handleCaptureCheckout,
 
+        signInWithGoogle,
+        signUpUser,
+        logoutUser,
+        signInUser,
+
         setShippingData,
+        setCurrentUser,
       }}
     >
       {children}

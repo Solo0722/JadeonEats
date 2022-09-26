@@ -15,6 +15,7 @@
     "axios": "^0.27.2",
     "canvas-confetti": "^1.5.1",
     "craco-less": "^2.0.0",
+    "firebase": "^9.10.0",
     "google-map-react": "^2.1.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -47,8 +48,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "proxy": "http://localhost:5000"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

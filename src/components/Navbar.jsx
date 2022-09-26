@@ -1,5 +1,6 @@
-import { Button, Badge } from "antd";
-import { BiSearch, BiUser, BiCartAlt } from "react-icons/bi";
+import { Button, Badge, Avatar, Dropdown, Image, Menu } from "antd";
+import { BiSearch, BiUser, BiCartAlt, BiLogOut } from "react-icons/bi";
+import { UserOutlined } from "@ant-design/icons";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,11 +22,37 @@ const Navbar = () => {
     }
   };
 
+  const { currentUser, logoutUser } = useContext(AppContext);
+
   useEffect(() => {
     changeBackground();
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground);
   });
+
+  const dropdownMenu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: <a href="">{currentUser?.displayName}</a>,
+        },
+        {
+          key: "2",
+          label: <a href="">{currentUser?.email}</a>,
+        },
+        {
+          key: "3",
+          label: (
+            <a href="" onClick={logoutUser}>
+              Logout
+            </a>
+          ),
+          icon: <BiLogOut />,
+        },
+      ]}
+    />
+  );
 
   return (
     <NavContainer
@@ -37,29 +64,43 @@ const Navbar = () => {
     >
       <LogoContainer>
         <Drawerbar />
-        {/* <img src="/salad.png" alt="logo" width={25} height={25} /> */}
-        <img
-          src="/assets/img/logo/logo-2.svg"
-          alt="Logo"
-          // width={30}
-          // height={30}
-        />
+        <img src="/assets/img/logo/logo-2.svg" alt="Logo" />
       </LogoContainer>
-      <DeliverTo />
+      <AddressWrapper>
+        <DeliverTo />
+      </AddressWrapper>
 
       <ToolsContainer>
         <Button
           className="tools-item"
           icon={<BiSearch size={20} />}
+          style={{ marginRight: "5px" }}
           type="text"
           onClick={() => navigate("/search")}
         />
-        <Button
-          className="tools-item"
-          icon={<BiUser size={20} />}
-          type="text"
-          onClick={() => navigate("/auth")}
-        />
+        {!currentUser ? (
+          <Button
+            className="tools-item"
+            icon={<BiUser size={20} />}
+            type="text"
+            onClick={() => navigate("/auth")}
+          />
+        ) : (
+          <Dropdown overlay={dropdownMenu}>
+            <Avatar
+              size="small"
+              // src={
+              //   <img
+              //     src={localStorage.getItem("currentUser")?.photoURL}
+              //     width={30}
+              //     style={{ zIndex: "100" }}
+              //   />
+              // }
+              alt={`${currentUser?.email?.slice(0, 1)}`}
+              // icon={<UserOutlined />}
+            />
+          </Dropdown>
+        )}
         <CartContainer
           style={{
             display: `${
@@ -115,7 +156,6 @@ const LogoContainer = styled.div`
     cursor: pointer;
   }
 `;
-// const SearchContainer = styled.div``;
 export const ToolsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -129,7 +169,17 @@ export const ToolsContainer = styled.div`
     margin-left: 5px;
   }
 `;
-const AuthenticationContainer = styled.div``;
+
+const AddressWrapper = styled.div`
+  display: block;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    & {
+      display: none;
+    }
+  }
+`;
+
 const CartContainer = styled.div``;
 
 export default Navbar;

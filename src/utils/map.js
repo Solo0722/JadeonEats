@@ -2,16 +2,19 @@ import { Button, Input } from "antd";
 import React, { useState } from "react";
 
 import MapPicker from "react-google-map-picker";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const DefaultLocation = { lat: 10, lng: 106 };
-const DefaultZoom = 10;
+const DefaultLocation = { lat: 6.69662, lng: -1.68095 };
+const DefaultZoom = 16;
 
 const LocationPicker = () => {
-  const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
+  const navigate  = useNavigate();
 
+  const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
   const [location, setLocation] = useState(defaultLocation);
   const [zoom, setZoom] = useState(DefaultZoom);
+
 
   function handleChangeLocation(lat, lng) {
     setLocation({ lat: lat, lng: lng });
@@ -30,15 +33,18 @@ const LocationPicker = () => {
     <>
       <LocationDetails>
         <h2>Pick Your Delivery location</h2>
-        <Button type="primary" onClick={handleResetLocation}>
+        <Button type="ghost" onClick={handleResetLocation}>
           Reset Location
         </Button>
-        <label>Latitute:</label>
+        <Button type="primary" onClick={() => navigate("/menu")}>
+          Confirm Location
+        </Button>
+        {/* <label>Latitute:</label>
         <Input type="text" value={location.lat} disabled />
         <label>Longitute:</label>
         <Input type="text" value={location.lng} disabled />
         <label>Zoom:</label>
-        <Input type="text" value={zoom} disabled />
+        <Input type="text" value={zoom} disabled /> */}
       </LocationDetails>
 
       <MapPicker
@@ -63,6 +69,10 @@ const LocationDetails = styled.div`
 
   label {
     margin-top: 10px;
+  }
+
+  button {
+    margin: 10px 0;
   }
 
   @media screen and (max-width: 768px) {
