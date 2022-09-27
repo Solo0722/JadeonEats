@@ -96,8 +96,8 @@ const Navbar = () => {
               //     style={{ zIndex: "100" }}
               //   />
               // }
-              alt={`${currentUser?.email?.slice(0, 1)}`}
-              // icon={<UserOutlined />}
+              // alt={`${currentUser?.email?.slice(0, 1)}`}
+              icon={<BiUser />}
             />
           </Dropdown>
         )}

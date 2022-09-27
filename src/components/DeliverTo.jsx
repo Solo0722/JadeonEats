@@ -1,4 +1,4 @@
-import { Tooltip } from "antd";
+import { Dropdown, Menu, Tooltip } from "antd";
 import React, { useContext } from "react";
 import { HiLocationMarker } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
@@ -6,27 +6,45 @@ import styled from "styled-components";
 import { AppContext } from "../context/Context";
 
 const DeliverTo = () => {
-  const { setDeliveryAddress } = useContext(AppContext);
   const navigate = useNavigate();
+
+  const dropdownMenu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: <a href="">Use current location</a>,
+        },
+        {
+          key: "2",
+          label: (
+            <a onClick={() => navigate("/location-picker")}>
+              Pick location from map
+            </a>
+          ),
+        },
+      ]}
+    />
+  );
 
   return (
     <Container>
-      <div className="input-wrapper">
-        <Tooltip title="Pick location from map">
+      <Dropdown overlay={dropdownMenu} trigger={"click"}>
+        <div className="input-wrapper">
           <HiLocationMarker
             className="icon"
             size={24}
             onClick={() => navigate("/location-picker")}
           />
-        </Tooltip>
-        <input
-          className="input-field"
-          type="text"
-          placeholder="Delivery Address"
-          defaultValue={JSON.parse(localStorage.getItem("deliveryAddress"))}
-          onChange={(e) => setDeliveryAddress(e.target.value)}
-        />
-      </div>
+          <button
+            className="input-field"
+            type="text"
+            placeholder="Delivery Address"
+          >
+            Delivery Address
+          </button>
+        </div>
+      </Dropdown>
     </Container>
   );
 };

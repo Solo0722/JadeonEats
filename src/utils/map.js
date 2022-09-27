@@ -1,23 +1,37 @@
 import { Button, Input } from "antd";
-import React, { useState } from "react";
-
+import axios from "axios";
+import React, { useState, useContext } from "react";
 import MapPicker from "react-google-map-picker";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { AppContext } from "../context/Context";
 
 const DefaultLocation = { lat: 6.69662, lng: -1.68095 };
 const DefaultZoom = 16;
 
 const LocationPicker = () => {
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
-  const [location, setLocation] = useState(defaultLocation);
+  const [locationName, setLocationName] = useState("");
   const [zoom, setZoom] = useState(DefaultZoom);
 
+  const { deliveryAddress, setDeliveryAddress } = useContext(AppContext);
+
+  const getLocationName = async (lat, long) => {
+    const data = await axios
+      .get(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=true&key=AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8`
+      )
+      .catch((err) => console.log(err));
+
+    console.log(data);
+  };
 
   function handleChangeLocation(lat, lng) {
-    setLocation({ lat: lat, lng: lng });
+    setDeliveryAddress({ lat: lat, lng: lng });
+    // console.log(deliveryAddress);
+    // getLocationName(deliveryAddress.lat, deliveryAddress.lng);
   }
 
   function handleChangeZoom(newZoom) {
@@ -33,18 +47,18 @@ const LocationPicker = () => {
     <>
       <LocationDetails>
         <h2>Pick Your Delivery location</h2>
+        <Input
+          type="text"
+          disabled
+          defaultValue={locationName}
+          placeholder="Pick your Delivery location"
+        />
         <Button type="ghost" onClick={handleResetLocation}>
           Reset Location
         </Button>
         <Button type="primary" onClick={() => navigate("/menu")}>
           Confirm Location
         </Button>
-        {/* <label>Latitute:</label>
-        <Input type="text" value={location.lat} disabled />
-        <label>Longitute:</label>
-        <Input type="text" value={location.lng} disabled />
-        <label>Zoom:</label>
-        <Input type="text" value={zoom} disabled /> */}
       </LocationDetails>
 
       <MapPicker

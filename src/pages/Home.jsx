@@ -74,6 +74,11 @@ const Home = () => {
                           Testimonials
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="page-scroll" href="/auth">
+                          Sign in
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </nav>

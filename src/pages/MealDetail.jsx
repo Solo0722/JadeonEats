@@ -1,7 +1,5 @@
-import {
-  ShoppingOutlined,
-} from "@ant-design/icons";
-import { Button, Divider, Spin } from "antd";
+import { ShoppingOutlined, StarFilled } from "@ant-design/icons";
+import { Button, Divider, Rate, Spin } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -40,11 +38,17 @@ const MealDetail = () => {
                 <img src={product?.image.url} />
               </ImgContainer>
               <h2 style={{ fontWeight: "bold" }}>{product.name}</h2>
+              <Rate value={4.5} allowHalf />
               <div
-                style={{ width: "100%", display: "flex", flexDirection: "row" }}
+                style={{
+                  width: "100%",
+                  margin: "10px 0",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
               >
                 {product.categories.map((c) => (
-                  <p style={{ fontStyle: "italic" }}>{c.name}, </p>
+                  <p style={{ color: "rgba(0,0,0,0.5)" }}>{c.name}, </p>
                 ))}
               </div>
 
@@ -63,13 +67,7 @@ const MealDetail = () => {
                   Add to cart
                 </Button>
               </AmountWrapper>
-              <p>{product.description}</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                sed numquam a recusandae magnam amet quas doloribus? Sequi vero
-                voluptas quisquam voluptatibus voluptatem et modi cum quo!
-                Asperiores, sunt assumenda.
-              </p>
+              <p>{product?.description}</p>
             </MealDetailContainer>
           )}
           <Divider />
@@ -122,7 +120,7 @@ const Wrapper = styled.div`
 const MealDetailContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
 const ImgContainer = styled.div`
@@ -144,7 +142,7 @@ const AmountWrapper = styled.div`
 `;
 
 const MoreContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 50px;
 
   h2 {
     text-align: center;

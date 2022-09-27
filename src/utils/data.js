@@ -4,11 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const categories = [
   {
-    id: "",
-    name: "Deals",
-    image: "/assets/img/sidebar/deals.png",
-  },
-  {
     id: "cat_nPEVlNLV0oa7dM",
     name: "Breakfast",
     image: "/assets/img/sidebar/coffeeandtea.png",
