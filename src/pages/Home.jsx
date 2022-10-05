@@ -134,7 +134,7 @@ const Home = () => {
                   Delivery Services
                 </span>
                 <h1 class="wow fadeInUp" data-wow-delay=".4s">
-                  All Essentials You Need
+                  Every delicacy you want
                 </h1>
               </div>
             </div>
@@ -143,13 +143,16 @@ const Home = () => {
             <div class="col-lg-4 col-md-6">
               <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                 <div class="icon">
-                  <img src="assets/img/service/service-icon-1.svg" alt="" />
+                  <img
+                    src="assets/img/landingpage/caramelized-plantain.png"
+                    alt=""
+                  />
                 </div>
                 <div class="content">
                   <h3>Local</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
+                    We offer local Ghanaian delicacies from breakfast to supper
+                    like Fufu,boiled yam and eggs, Hausa koko and many more.
                   </p>
                 </div>
               </div>
@@ -157,13 +160,13 @@ const Home = () => {
             <div class="col-lg-4 col-md-6">
               <div class="single-service wow fadeInUp" data-wow-delay=".4s">
                 <div class="icon">
-                  <img src="assets/img/service/service-icon-2.svg" alt="" />
+                  <img src="assets/img/landingpage/pizza.png" alt="" />
                 </div>
                 <div class="content">
                   <h3>Continental</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
+                    We also offer continental delicacies like chicken pizza,
+                    pepperoni pizza, fried rice and chicken, and so many more.
                   </p>
                 </div>
               </div>
@@ -171,13 +174,14 @@ const Home = () => {
             <div class="col-lg-4 col-md-6">
               <div class="single-service wow fadeInUp" data-wow-delay=".6s">
                 <div class="icon">
-                  <img src="assets/img/service/service-icon-3.svg" alt="" />
+                  <img src="assets/img/landingpage/food.png" alt="" />
                 </div>
                 <div class="content">
                   <h3>Desserts</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt.
+                    Want to try some freshly made yoghurt with meat pie? We've
+                    got you. We also offer other desserts such as ice-cream,
+                    doughouts and even our local sobolo.
                   </p>
                 </div>
               </div>
@@ -204,9 +208,10 @@ const Home = () => {
                     On-time Delivery and Customer Satisfaction
                   </h1>
                   <p class="wow fadeInUp" data-wow-delay=".6s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua.
+                    We have well-disciplined deliverers who bring your food to
+                    your doorstep on time. We are never late. We also provide
+                    the best customer services and as a result, our customers
+                    are always satisfied.
                   </p>
                 </div>
                 <div
@@ -276,9 +281,8 @@ const Home = () => {
                     Order Now, Recieve Within 30mins
                   </h1>
                   <p class="mb-35 wow fadeInUp" data-wow-delay=".6s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore hdht dolore
-                    magna aliquyam erat, sed diam voluptua.
+                    When you order your now, you receive your it in less than 30
+                    minutes. Try JadeonEats now!
                   </p>
                   <a
                     href="/menu"
@@ -313,16 +317,46 @@ const Home = () => {
               <div class="about-content received-content">
                 <div class="section-title">
                   <span class="wow fadeInUp" data-wow-delay=".2s">
-                    Contactless Delivery
+                    How to order your food
                   </span>
-                  <h1 class="mb-25 wow fadeInUp" data-wow-delay=".4s">
-                    On-time Delivery to Your Doorstep
-                  </h1>
-                  <p class="wow fadeInUp" data-wow-delay=".6s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua.
-                  </p>
+                  <ul style={{ listStyle: "outside" }}>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        Click on the "Get Started" button on this page.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        Select the food you want to purchase by clicking on the
+                        shopping cart icon on each delicacy.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        After selection your food of choice, click on the cart
+                        icon on the navbar to go to the cart. This is where all
+                        the foods you've selected and their prices will be.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        Click on the checkout button at the bottom of the page.
+                        Enter your delivery details and click next.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        Enter your card number at the space provided for card
+                        number and click next.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="wow fadeInUp" data-wow-delay=".6s">
+                        Hooray! You just completed your order. Now sit back and
+                        witness how quickly your food will be delivered to you.
+                      </p>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -357,10 +391,10 @@ const Home = () => {
                 </div>
                 <div class="content">
                   <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
+                    JadeonEats meal delivery service got me here. Their meals
+                    are great for people with busy schedule like me, and they’re
+                    healthy and delicious. PS. I have sweet tooth and their
+                    desserts are to die for!
                   </p>
                 </div>
                 <div class="info">
@@ -388,10 +422,11 @@ const Home = () => {
                 </div>
                 <div class="content">
                   <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
+                    If you want to eat healthier, jadeoneats has a plan for you.
+                    Their amazing chefs prepared a wonderful cold-pressed juice
+                    and meal for me. The chefs are incredible, and it takes all
+                    the effort out of my busy lifestyle. It’s as good as when
+                    you sit down at the restaurant eating really great food.
                   </p>
                 </div>
                 <div class="info">
@@ -419,10 +454,9 @@ const Home = () => {
                 </div>
                 <div class="content">
                   <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
+                    Tried the ready to eat meat pie on a whim today while
+                    studying for my exams. First bite in I knew I had to go back
+                    and get a few more for the weekend. Outstanding!!!
                   </p>
                 </div>
                 <div class="info">
@@ -450,10 +484,11 @@ const Home = () => {
                 </div>
                 <div class="content">
                   <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
+                    I got my large order of pepperoni pizza today via their
+                    website and was very impressed with the packaging and
+                    freshness as well as the quality of my meal. The pizza was
+                    soooo good!! Looking forward to being a REGULAR ordering
+                    customer from now on!!
                   </p>
                 </div>
                 <div class="info">
@@ -470,7 +505,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 -mt-60">
+            <div class="col-lg-4 col-md-6 -mt-100">
               <div class="single-testimonial wow fadeInUp" data-wow-delay=".4s">
                 <div class="rating">
                   <i class="lni lni-star-filled"></i>
@@ -480,12 +515,7 @@ const Home = () => {
                   <i class="lni lni-star-filled"></i>
                 </div>
                 <div class="content">
-                  <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
-                  </p>
+                  <p>Fantastic snacks! The prepared foods are delicious!</p>
                 </div>
                 <div class="info">
                   <div class="image">
@@ -512,10 +542,10 @@ const Home = () => {
                 </div>
                 <div class="content">
                   <p>
-                    Lorem ipsum dolor sit amet onsetetur sadipscing elitr, sed
-                    diam non eirmod tempor invidunt ut labore etdo magna
-                    aliquyam erat, sed diam vero eos et accusam et justo duo
-                    dolores et ea rebum clita kasd gubergren.
+                    Thank you for your food. It’s so fresh and delicious and it
+                    takes the work and guess-work out of my busy life when it
+                    comes to eating. JadeonEats is AWESOME! You have a customer
+                    for life!
                   </p>
                 </div>
                 <div class="info">
@@ -610,13 +640,13 @@ const Home = () => {
                 <h3>About Us</h3>
                 <ul class="links">
                   <li>
-                    <a href="">Home</a>
+                    <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="">Services</a>
+                    <a href="#services">Services</a>
                   </li>
                   <li>
-                    <a href="">About Us</a>
+                    <a href="#about">About Us</a>
                   </li>
                   <li>
                     <a href="">Contact</a>
