@@ -74,6 +74,41 @@ const PaymentDetails = ({ prev, next }) => {
     console.log("Failed:", errorInfo);
   };
 
+  const cashOnDeliveryOrder = () => {
+    const orderData = {
+      line_items: checkoutToken.live.line_items,
+      customer: {
+        firstname: shippingData.firstname,
+        lastname: shippingData.lastname,
+        email: shippingData.email,
+      },
+      shipping: {
+        name: "Primary",
+        street: shippingData.delivery_address,
+        town_city: shippingData.delivery_address,
+        county_state: "AH",
+        postal_zip_code: "AK-039-5028",
+        country: "GH",
+      },
+      fulfillment: {
+        shipping_method: shippingOption,
+      },
+      payment: {
+        gateway: "test_gateway",
+        card: {
+          number: "4242424242424242",
+          expiry_month: "02",
+          expiry_year: "24",
+          cvc: "123",
+          postal_zip_code: "94107",
+        },
+      },
+    };
+    console.log(orderData);
+    handleCaptureCheckout(checkoutToken.id, orderData);
+    navigate("/success");
+  };
+
   return (
     <PaymentDetailsContainer>
       <ReviewOrder checkoutToken={checkoutToken} />
@@ -115,7 +150,11 @@ const PaymentDetails = ({ prev, next }) => {
       </Elements>
       <Divider />
       <p style={{ textAlign: "center" }}>or</p>
-      <Button block style={{ background: "blue", color: "#fff" }}>
+      <Button
+        block
+        style={{ background: "blue", color: "#fff", borderColor: "blue" }}
+        onClick={cashOnDeliveryOrder}
+      >
         Cash on Delivery
       </Button>
     </PaymentDetailsContainer>

@@ -7,7 +7,7 @@ const ReviewOrder = ({ checkoutToken }) => {
     <OrderContainer>
       <h2 style={{ fontWeight: "bolder" }}>Order Summary</h2>
       <List style={{ margin: "20px 0" }}>
-        {checkoutToken.live.line_items.map((product) => (
+        {checkoutToken?.live.line_items.map((product) => (
           <List.Item key={product.name}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <h4>{product.name}</h4>
@@ -20,7 +20,7 @@ const ReviewOrder = ({ checkoutToken }) => {
         <List.Item>
           <h3 style={{ fontWeight: "bold" }}>Total</h3>
           <p style={{ fontWeight: "bold" }}>
-            {checkoutToken.live.subtotal.formatted_with_symbol}
+            {checkoutToken?.live.subtotal.formatted_with_symbol}
           </p>
         </List.Item>
       </List>
